@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,16 +10,21 @@ import {
   NbLayoutModule, 
   NbButtonModule, 
   NbCardModule,
-  NbInputModule
+  NbInputModule,
+  NbSidebarModule,
+  NbAccordionModule,
+  NbMenuModule
 } from '@nebular/theme';
 import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +33,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     NbStepperModule,
     NbButtonModule,
     NbCardModule,
+    NbEvaIconsModule,
     NbInputModule,
     ReactiveFormsModule,
     NbThemeModule.forRoot(),
+    NbSidebarModule.forRoot(),
     NbLayoutModule,
+    NbAccordionModule,
+    NbMenuModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
