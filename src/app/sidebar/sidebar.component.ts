@@ -17,21 +17,24 @@ export class SidebarComponent implements OnInit {
         {
           title: 'Camiones',
           link: '', // goes into angular `routerLink`
+          icon: 'car'
         },
         {
           title: 'INAL',
           link: '',
+          icon: 'file'
         },
         {
           title: 'Senasa',
-          link: '',
+          link: 'senasa',
+          icon: 'file'
         }
       ],
     },
     {
       title: 'Proceso',
-      icon: 'lock-outline',
-      link: '',
+      icon: 'settings',
+      link: 'process',
     }
   ];
 

@@ -2,6 +2,10 @@
 @import 'themes';
 
 @import '~@nebular/theme/styles/globals';
+@import '~@nebular/theme/styles/themes/dark';
+@import '~@nebular/theme/styles/themes/cosmic';
+@import './scss/form';
+@import './scss/section';
 
 @include nb-install() {
   @include nb-theme-global();

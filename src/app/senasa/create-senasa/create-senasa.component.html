@@ -1,0 +1,20 @@
+<nb-card status="primary">
+  <nb-card-header>Crear Documento Senasa</nb-card-header>
+  <nb-card-body>
+      <form class="form" [formGroup]="senasaForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Denominación" formControlName="denomination">
+          <input class="input" fullWidth nbInput type="text" placeholder="Razón Social" formControlName="businessName">
+          <input class="input" fullWidth nbInput type="text" placeholder="Certificación" formControlName="certification">
+        
+          <nb-select class="input" fullWidth placeholder="País">
+            <nb-option *ngFor="let country of countries" value="country">{{country}}</nb-option>
+          </nb-select>
+      </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button class="margin-right" status="danger" nbButton>Cancel</button>
+      <button status="success" nbButton>Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

@@ -12,19 +12,26 @@ import {
   NbCardModule,
   NbInputModule,
   NbSidebarModule,
-  NbAccordionModule,
+  NbSelectModule,
+  NbIconModule,
+  NbDialogModule,
+  NbTreeGridModule,
   NbMenuModule
 } from '@nebular/theme';
 import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { SenasaComponent } from './senasa/senasa.component';
+import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    SidebarComponent
+    SidebarComponent,
+    SenasaComponent,
+    CreateSenasaComponent
   ],
   imports: [
     BrowserModule,
@@ -35,14 +42,20 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NbCardModule,
     NbEvaIconsModule,
     NbInputModule,
+    NbSelectModule,
+    NbIconModule,
+    NbDialogModule.forRoot(),
     ReactiveFormsModule,
     NbThemeModule.forRoot(),
     NbSidebarModule.forRoot(),
+    NbTreeGridModule,
     NbLayoutModule,
-    NbAccordionModule,
     NbMenuModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateSenasaComponent
+  ]
 })
 export class AppModule { }

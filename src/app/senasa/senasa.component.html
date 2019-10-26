@@ -1,0 +1,27 @@
+<h2>Senasa</h2>
+
+<button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
+<input nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource" equalColumnsWidth>
+
+    <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+    <!-- <ng-container [nbTreeGridColumnDef]="customColumn">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row">
+        {{row.data.name}}
+      </td>
+    </ng-container> -->
+
+    <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+      <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+    </ng-container>
+
+    <ng-container [nbTreeGridColumnDef]="customColumn">
+        <td nbTreeGridCell *nbTreeGridCellDef="let row">
+          <nb-icon icon="edit-outline"></nb-icon>
+          <nb-icon icon="trash-outline"></nb-icon>
+        </td>
+    </ng-container>
+  
+  </table>
