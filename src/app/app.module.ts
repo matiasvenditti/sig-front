@@ -15,6 +15,7 @@ import {
   NbSelectModule,
   NbIconModule,
   NbDialogModule,
+  NbDatepickerModule,
   NbTreeGridModule,
   NbMenuModule
 } from '@nebular/theme';
@@ -24,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SenasaComponent } from './senasa/senasa.component';
 import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +34,11 @@ import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.comp
     MenuComponent,
     SidebarComponent,
     SenasaComponent,
-    CreateSenasaComponent
+    CreateSenasaComponent,
+    DeleteSenasaComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -46,8 +51,9 @@ import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.comp
     NbIconModule,
     NbDialogModule.forRoot(),
     ReactiveFormsModule,
-    NbThemeModule.forRoot(),
+    NbThemeModule.forRoot({name: 'dark'}),
     NbSidebarModule.forRoot(),
+    NbDatepickerModule.forRoot(),
     NbTreeGridModule,
     NbLayoutModule,
     NbMenuModule.forRoot(),
@@ -55,7 +61,8 @@ import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.comp
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    CreateSenasaComponent
+    CreateSenasaComponent,
+    DeleteSenasaComponent
   ]
 })
 export class AppModule { }

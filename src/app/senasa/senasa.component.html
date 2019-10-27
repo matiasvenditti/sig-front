@@ -1,26 +1,26 @@
-<h2>Senasa</h2>
+<div class="section-header">
+    <h2>Senasa</h2>
+    <button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
+</div>
 
-<button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
-<input nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
 
 <table [nbTreeGrid]="dataSource" equalColumnsWidth>
-
+    <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
-    <!-- <ng-container [nbTreeGridColumnDef]="customColumn">
-      <td nbTreeGridCell *nbTreeGridCellDef="let row">
-        {{row.data.name}}
-      </td>
-    </ng-container> -->
-
     <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-      <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column | titlecase}}</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="customColumn">
-        <td nbTreeGridCell *nbTreeGridCellDef="let row">
-          <nb-icon icon="edit-outline"></nb-icon>
-          <nb-icon icon="trash-outline"></nb-icon>
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+          <div class="action-container">
+              <nb-icon status="info" icon="edit-outline"></nb-icon>
+              <nb-icon (click)="delete()" status="danger" icon="trash-outline"></nb-icon>
+          </div>
         </td>
     </ng-container>
   

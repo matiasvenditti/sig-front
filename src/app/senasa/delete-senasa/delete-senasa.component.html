@@ -1,0 +1,15 @@
+<nb-card status="danger">
+    <nb-card-header>Eliminar Documento Senasa</nb-card-header>
+    <nb-card-body>
+  
+        <form class="form" [formGroup]="deleteSenasaForm">
+            <input fullWidth nbInput type="text" placeholder="Nombre del documento" formControlName="confirm">
+        </form>
+  
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="button-container">
+        <button (click)="submit()" status="danger" nbButton [disabled]="!deleteSenasaForm.valid">Eliminar</button>
+      </div>
+    </nb-card-footer>
+  </nb-card>

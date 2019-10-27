@@ -1,3 +1,32 @@
 .float-right {
     float: right;
 }
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .section-title{
+        display: inline-block;
+    }
+
+}
+
+.action-container{
+    display: flex;
+    justify-content: space-evenly;
+
+    nb-icon:hover{
+        cursor: pointer;
+        transform: scale(1.10);
+    }
+
+    nb-icon {
+        transition: 0.3s all ease-in-out;
+    }
+}
+
+.center{
+    text-align: center;
+}

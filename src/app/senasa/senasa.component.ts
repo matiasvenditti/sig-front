@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NbDialogService, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
 import { CreateSenasaComponent } from './create-senasa/create-senasa.component';
+import { SenasaService } from '../services/senasa/senasa.service';
+import { DeleteSenasaComponent } from './delete-senasa/delete-senasa.component';
 
 interface TreeNode<T> {
   data: T;
@@ -26,7 +28,7 @@ export class SenasaComponent implements OnInit {
 
   customColumn = 'action';
   defaultColumns = [ 'size', 'kind', 'items'];
-  allColumns = [ this.customColumn, ...this.defaultColumns];
+  allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   data: TreeNode<FSEntry>[] = [
@@ -41,14 +43,22 @@ export class SenasaComponent implements OnInit {
     },
   ];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private dialogService: NbDialogService) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private dialogService: NbDialogService, private senasaService: SenasaService) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.senasaService.getAll().subscribe((response) => {
+      console.log(response);
+    })
+  }
 
   open() {
     this.dialogService.open(CreateSenasaComponent)
+  }
+
+  delete(senasa: any) {
+    this.dialogService.open(DeleteSenasaComponent, {context: {senasa: senasa}})
   }
 
 }
