@@ -15,8 +15,10 @@ import {
   NbSelectModule,
   NbIconModule,
   NbDialogModule,
+  NbCheckboxModule,
   NbDatepickerModule,
   NbTreeGridModule,
+  NbToastrModule,
   NbMenuModule
 } from '@nebular/theme';
 import { MenuComponent } from './menu/menu.component';
@@ -54,8 +56,10 @@ import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.comp
     NbThemeModule.forRoot({name: 'dark'}),
     NbSidebarModule.forRoot(),
     NbDatepickerModule.forRoot(),
+    NbToastrModule.forRoot(),
     NbTreeGridModule,
     NbLayoutModule,
+    NbCheckboxModule,
     NbMenuModule.forRoot(),
   ],
   providers: [],

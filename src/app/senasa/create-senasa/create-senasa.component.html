@@ -5,7 +5,6 @@
       <form class="form" [formGroup]="senasaForm">
           <input class="input" fullWidth nbInput type="text" placeholder="Denominación" formControlName="denomination">
           <input class="input" fullWidth nbInput type="text" placeholder="Razón Social" formControlName="businessName">
-          <input class="input" fullWidth nbInput type="text" placeholder="Certificación" formControlName="certification">
         
           <nb-select formControlName="country" class="input" fullWidth placeholder="País">
             <nb-option *ngFor="let country of countries" [value]="country">{{country}}</nb-option>
@@ -17,12 +16,13 @@
 
           <input class="input" fullWidth nbInput placeholder="Expiración" [nbDatepicker]="datepicker" formControlName="expirationDate">
           <nb-datepicker #datepicker></nb-datepicker>
+          <nb-checkbox formControlName="certification" class="input" status="primary">Certificación</nb-checkbox>
       </form>
 
   </nb-card-body>
   <nb-card-footer>
     <div class="button-container">
-      <button class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
       <button (click)="submit()" status="success" nbButton [disabled]="!senasaForm.valid">Submit</button>
     </div>
   </nb-card-footer>

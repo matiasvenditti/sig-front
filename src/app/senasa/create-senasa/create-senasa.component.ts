@@ -3,6 +3,9 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Senasa } from 'src/app/model/senasa';
 import { SenasaComponent } from '../senasa.component';
 import { ProductMock } from 'src/app/model/product-mock';
+import { SenasaService } from 'src/app/services/senasa/senasa.service';
+import { NbDialogService, NbDialogRef } from '@nebular/theme';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-create-senasa',
@@ -20,13 +23,13 @@ export class CreateSenasaComponent implements OnInit {
     new ProductMock(3, 'Product 1', 'Liters'),
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private senasaService: SenasaService, private dialogRef: NbDialogRef, private toasterService: ToasterService) { }
 
   ngOnInit() {
     this.senasaForm = this.fb.group({
       denomination: ['', Validators.required],
       businessName: ['', Validators.required],
-      certification: [null, Validators.required],
+      certification: [false, Validators.requiredTrue],
       country: ['', Validators.required],
       expirationDate: [null, Validators.required],
       // componentes: ['', Validators.required],
@@ -43,7 +46,17 @@ export class CreateSenasaComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.senasaForm.value);
+    this.senasaService.create(this.senasaForm.value).subscribe(res => {
+      this.toasterService.showSuccess('Documento creado exitosamente','Operación exitosa');
+      this.close();
+    }, () => {
+      this.toasterService.showError('No se pudo crear el documento correctamente', 'Error');
+      this.close();
+    });
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
 }

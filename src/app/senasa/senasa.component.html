@@ -5,13 +5,41 @@
 
 <input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
 
-<table [nbTreeGrid]="dataSource" equalColumnsWidth>
+<table [nbTreeGrid]="dataSource">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 
-    <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
-      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column | titlecase}}</th>
-      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+    <ng-container nbTreeGridColumnDef="denomination">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Denominación</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['denomination']}}</td>
+    </ng-container>
+
+    <ng-container nbTreeGridColumnDef="businessName">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Nombre</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['businessName']}}</td>
+    </ng-container>
+
+    <ng-container nbTreeGridColumnDef="country">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>País</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['country']}}</td>
+    </ng-container>
+
+    <ng-container nbTreeGridColumnDef="certification">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Certificación</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+        <nb-icon *ngIf="row.data['certification']" status="success" icon="checkmark-outline"></nb-icon>
+        <nb-icon *ngIf="!row.data['certification']" status="danger" icon="close-outline"></nb-icon>
+      </td>
+    </ng-container>
+
+    <ng-container nbTreeGridColumnDef="expirationDate">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Expiración</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['expirationDate'] | date: 'short'}}</td>
+    </ng-container>
+
+    <ng-container nbTreeGridColumnDef="product">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product']}}</td>
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="customColumn">
