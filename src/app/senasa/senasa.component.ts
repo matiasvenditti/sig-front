@@ -33,10 +33,10 @@ export class SenasaComponent implements OnInit {
     {id: 4, denomination: 'Denomination 4', businessName: 'Business Name 4', country: 'Argentina', certification: true, createdDate: new Date(), expirationDate: new Date(), product: null},
   ]
 
-  private data: TreeNode<Senasa>[] = this.senasaMock.map(elem => {return {data: elem}});
+  private data: TreeNode<Senasa>[];
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<Senasa>, private dialogService: NbDialogService, private senasaService: SenasaService) {
-    this.dataSource = this.dataSourceBuilder.create(this.data);
+    this.initData();
   }
 
   ngOnInit() {
@@ -46,7 +46,10 @@ export class SenasaComponent implements OnInit {
   }
 
   open() {
-    this.dialogService.open(CreateSenasaComponent);
+    this.dialogService.open(CreateSenasaComponent).onClose.subscribe((senasa: any) => {
+      this.senasaMock.push(senasa);
+      this.initData();
+    });
   }
 
   delete(senasa: Senasa) {
@@ -54,10 +57,14 @@ export class SenasaComponent implements OnInit {
     .onClose.subscribe((deleted: any) => {
       if (deleted) {
         this.senasaMock = this.senasaMock.filter(senasa => senasa.id !== deleted.id);
-        this.data = this.senasaMock.map(elem => {return {data: elem}});
-        this.dataSource = this.dataSourceBuilder.create(this.data);
+        this.initData();
       }
     });
+  }
+
+  initData() {
+    this.data = this.senasaMock.map(elem => {return {data: elem}});
+    this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
 }

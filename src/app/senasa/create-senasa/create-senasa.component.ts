@@ -48,7 +48,7 @@ export class CreateSenasaComponent implements OnInit {
   submit() {
     this.senasaService.create(this.senasaForm.value).subscribe(res => {
       this.toasterService.showSuccess('Documento creado exitosamente','Operación Exitosa');
-      this.close();
+      this.dialogRef.close({senasa: res});
     }, () => {
       this.toasterService.showError('No se pudo crear el documento correctamente', 'Error');
       this.close();
