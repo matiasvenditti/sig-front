@@ -29,6 +29,8 @@ import { SenasaComponent } from './senasa/senasa.component';
 import { CreateSenasaComponent } from './senasa/create-senasa/create-senasa.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.component';
+import { ProductComponent } from './product/product.component';
+import { CreateProductComponent } from './product/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.comp
     SidebarComponent,
     SenasaComponent,
     CreateSenasaComponent,
-    DeleteSenasaComponent
+    DeleteSenasaComponent,
+    ProductComponent,
+    CreateProductComponent
   ],
   imports: [
     HttpClientModule,
@@ -66,7 +70,8 @@ import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.comp
   bootstrap: [AppComponent],
   entryComponents: [
     CreateSenasaComponent,
-    DeleteSenasaComponent
+    DeleteSenasaComponent,
+    CreateProductComponent
   ]
 })
 export class AppModule { }

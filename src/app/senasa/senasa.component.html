@@ -49,7 +49,7 @@
 
     <ng-container nbTreeGridColumnDef="product">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
-      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product']}}</td>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row?.data['product']?.name}}</td>
     </ng-container>
 
     <ng-container [nbTreeGridColumnDef]="customColumn">

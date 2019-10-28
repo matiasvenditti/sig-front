@@ -6,6 +6,7 @@ import { ProductMock } from 'src/app/model/product-mock';
 import { SenasaService } from 'src/app/services/senasa/senasa.service';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { ToasterService } from 'src/app/services/toaster.service';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-create-senasa',
@@ -18,12 +19,16 @@ export class CreateSenasaComponent implements OnInit {
   private countries: string[];
 
   private products: ProductMock[] = [
-    new ProductMock(1, 'Product 1', 'Grams'),
-    new ProductMock(2, 'Product 2', 'Tons'),
-    new ProductMock(3, 'Product 1', 'Liters'),
+    // new ProductMock(1, 'Product 1', 'Grams'),
+    // new ProductMock(2, 'Product 2', 'Tons'),
+    // new ProductMock(3, 'Product 1', 'Liters'),
   ];
 
-  constructor(private fb: FormBuilder, private senasaService: SenasaService, private dialogRef: NbDialogRef<CreateSenasaComponent>, private toasterService: ToasterService) { }
+  constructor(private fb: FormBuilder, 
+    private senasaService: SenasaService, 
+    private dialogRef: NbDialogRef<CreateSenasaComponent>, 
+    private toasterService: ToasterService, 
+    private productService: ProductService) { }
 
   ngOnInit() {
     this.senasaForm = this.fb.group({
@@ -43,12 +48,17 @@ export class CreateSenasaComponent implements OnInit {
       'Paraguay',
       'Uruguay'
     ];
+
+    this.productService.getAll().subscribe(res => {
+      this.products = res;
+    });
   }
 
   submit() {
     this.senasaService.create(this.senasaForm.value).subscribe(res => {
+      console.log(this.senasaForm.value);
       this.toasterService.showSuccess('Documento creado exitosamente','Operación Exitosa');
-      this.dialogRef.close({senasa: res});
+      this.dialogRef.close(res);
     }, () => {
       this.toasterService.showError('No se pudo crear el documento correctamente', 'Error');
       this.close();

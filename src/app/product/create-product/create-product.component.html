@@ -1,0 +1,20 @@
+<nb-card status="primary">
+  <nb-card-header>Crear Documento Senasa</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="productForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="name">
+        
+          <nb-select formControlName="unit" class="input" fullWidth placeholder="Unidades">
+            <nb-option *ngFor="let unit of units" [value]="unit">{{unit}}</nb-option>
+          </nb-select>
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!productForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

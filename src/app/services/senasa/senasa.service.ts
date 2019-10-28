@@ -13,11 +13,11 @@ export class SenasaService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get(SenasaApi.get.findAll());
+    return this.http.get<Senasa[]>(SenasaApi.get.findAll());
   }
 
   create(senasa: SenasaDTO) {
-    return this.http.post(SenasaApi.post.create(), senasa);
+    return this.http.post<Senasa>(SenasaApi.post.create(), senasa);
   }
 
   delete(senasaId: number) {

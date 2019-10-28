@@ -28,6 +28,11 @@ export class SidebarComponent implements OnInit {
           title: 'Senasa',
           link: 'senasa',
           icon: 'file'
+        },
+        {
+          title: 'Productos',
+          link: 'products',
+          icon: 'shopping-bag'
         }
       ],
     },

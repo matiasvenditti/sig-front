@@ -27,7 +27,7 @@ export class DeleteSenasaComponent implements OnInit {
   submit(){
     this.senasaService.delete(this.senasa.id).subscribe((_) => {
       this.toasterService.showSuccess('Documento eliminado exitosamente', 'Operación Exitosa');
-      this.dialogRef.close({id: 1});
+      this.dialogRef.close(this.senasa.id);
     }, () => {
       this.toasterService.showError('No se pudo eliminar el documento', 'Error');
       this.close();
