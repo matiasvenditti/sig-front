@@ -11,5 +11,8 @@ export const SenasaApi = {
     },
     put: {
 
+    },
+    delete: {
+        delete: (id: number) => `${apiUrl}/${id}`
     }
 }

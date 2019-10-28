@@ -1,10 +1,8 @@
-export interface Senasa {
-    id: number,
+export interface SenasaDTO{
     denomination: string,
     businessName: string,
     country: string,
     certification: boolean,
-    createdDate: Date,
     expirationDate: Date
     product: any
 }

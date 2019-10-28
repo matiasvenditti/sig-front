@@ -4,18 +4,12 @@ import { CreateSenasaComponent } from './create-senasa/create-senasa.component';
 import { SenasaService } from '../services/senasa/senasa.service';
 import { DeleteSenasaComponent } from './delete-senasa/delete-senasa.component';
 import { Senasa } from '../model/senasa';
+import { SenasaDTO } from '../dto/senasa-dto';
 
 interface TreeNode<T> {
   data: T;
   children?: TreeNode<T>[];
   expanded?: boolean;
-}
-
-interface FSEntry {
-  name: string;
-  size: string;
-  kind: string;
-  items?: number;
 }
 
 @Component({
@@ -28,15 +22,15 @@ export class SenasaComponent implements OnInit {
   private countries: string[];
 
   customColumn = 'action';
-  defaultColumns = ['denomination', 'businessName', 'country', 'certification', 'expirationDate', 'product'];
+  defaultColumns = ['id', 'denomination', 'businessName', 'country', 'certification', 'createdDate', 'expirationDate', 'product'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<Senasa>;
 
   private senasaMock: Senasa[] = [
-    {denomination: 'Denomination 1', businessName: 'Business Name 1', country: 'Argentina', certification: true, expirationDate: new Date(), product: null},
-    {denomination: 'Denomination 2', businessName: 'Business Name 2', country: 'Chile', certification: false, expirationDate: new Date(), product: null},
-    {denomination: 'Denomination 3', businessName: 'Business Name 3', country: 'Uruguay', certification: false, expirationDate: new Date(), product: null},
-    {denomination: 'Denomination 4', businessName: 'Business Name 4', country: 'Argentina', certification: true, expirationDate: new Date(), product: null},
+    {id: 1, denomination: 'Denomination 1', businessName: 'Business Name 1', country: 'Argentina', certification: true, createdDate: new Date(),  expirationDate: new Date(), product: null},
+    {id: 2, denomination: 'Denomination 2', businessName: 'Business Name 2', country: 'Chile', certification: false, createdDate: new Date(), expirationDate: new Date(), product: null},
+    {id: 3, denomination: 'Denomination 3', businessName: 'Business Name 3', country: 'Uruguay', certification: false, createdDate: new Date(), expirationDate: new Date(), product: null},
+    {id: 4, denomination: 'Denomination 4', businessName: 'Business Name 4', country: 'Argentina', certification: true, createdDate: new Date(), expirationDate: new Date(), product: null},
   ]
 
   data: TreeNode<Senasa>[] = this.senasaMock.map(elem => {return {data: elem}});
@@ -55,7 +49,8 @@ export class SenasaComponent implements OnInit {
     this.dialogService.open(CreateSenasaComponent)
   }
 
-  delete(senasa: any) {
+  delete(senasa: Senasa) {
+    console.log(senasa);
     this.dialogService.open(DeleteSenasaComponent, {context: {senasa: senasa}})
   }
 

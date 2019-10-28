@@ -23,7 +23,7 @@ export class CreateSenasaComponent implements OnInit {
     new ProductMock(3, 'Product 1', 'Liters'),
   ];
 
-  constructor(private fb: FormBuilder, private senasaService: SenasaService, private dialogRef: NbDialogRef, private toasterService: ToasterService) { }
+  constructor(private fb: FormBuilder, private senasaService: SenasaService, private dialogRef: NbDialogRef<CreateSenasaComponent>, private toasterService: ToasterService) { }
 
   ngOnInit() {
     this.senasaForm = this.fb.group({
@@ -47,7 +47,7 @@ export class CreateSenasaComponent implements OnInit {
 
   submit() {
     this.senasaService.create(this.senasaForm.value).subscribe(res => {
-      this.toasterService.showSuccess('Documento creado exitosamente','Operación exitosa');
+      this.toasterService.showSuccess('Documento creado exitosamente','Operación Exitosa');
       this.close();
     }, () => {
       this.toasterService.showError('No se pudo crear el documento correctamente', 'Error');

@@ -3,6 +3,7 @@
     <nb-card-body>
   
         <form class="form" [formGroup]="deleteSenasaForm">
+            <label class="label">Escriba <strong>{{senasa.businessName}}</strong> para eliminar el documento</label>
             <input fullWidth nbInput type="text" placeholder="Nombre del documento" formControlName="confirm">
         </form>
   
