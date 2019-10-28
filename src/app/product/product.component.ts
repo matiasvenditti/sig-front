@@ -4,6 +4,7 @@ import { ProductService } from '../services/product/product.service';
 import { NbTreeGridDataSourceBuilder, NbDialogService, NbTreeGridDataSource } from '@nebular/theme';
 import { TreeNode } from '../dto/tree-node';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getAll().subscribe(response => {
+      this.productData = response;
       this.data = response.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
     })
@@ -32,9 +34,16 @@ export class ProductComponent implements OnInit {
 
   open() {
     this.dialogService.open(CreateProductComponent).onClose.subscribe((product: ProductDTO) => {
-      console.log(product);
       this.productData.push(product);
       this.initData();
+    });
+  }
+
+  delete(product: ProductDTO) {
+    this.dialogService.open(DeleteProductComponent, {context: {product: product}})
+    .onClose.subscribe((deletedId: number) => {
+        this.productData = this.productData.filter(product => product.id !== deletedId);
+        this.initData();
     });
   }
 

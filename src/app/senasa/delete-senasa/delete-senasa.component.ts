@@ -16,7 +16,10 @@ export class DeleteSenasaComponent implements OnInit {
   private senasa: Senasa;
   private deleteSenasaForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private senasaService: SenasaService, private toasterService: ToasterService, private dialogRef: NbDialogRef<DeleteSenasaComponent>) { }
+  constructor(private fb: FormBuilder, 
+    private senasaService: SenasaService, 
+    private toasterService: ToasterService, 
+    private dialogRef: NbDialogRef<DeleteSenasaComponent>) { }
 
   ngOnInit() {
     this.deleteSenasaForm = this.fb.group({

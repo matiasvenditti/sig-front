@@ -34,6 +34,7 @@ export class SenasaComponent implements OnInit {
 
   ngOnInit() {
     this.senasaService.getAll().subscribe(response => {
+      this.senasaData = response;
       this.data = response.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
     })
@@ -48,7 +49,7 @@ export class SenasaComponent implements OnInit {
 
   delete(senasa: Senasa) {
     this.dialogService.open(DeleteSenasaComponent, {context: {senasa: senasa}})
-    .onClose.subscribe(deletedId => {
+    .onClose.subscribe((deletedId: number) => {
         this.senasaData = this.senasaData.filter(senasa => senasa.id !== deletedId);
         this.initData();
     });

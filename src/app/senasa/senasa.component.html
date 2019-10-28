@@ -5,7 +5,7 @@
 
 <input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
 
-<table [nbTreeGrid]="dataSource">
+<table [nbTreeGrid]="dataSource" equalColumnsWidth>
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 

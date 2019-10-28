@@ -1,0 +1,16 @@
+<nb-card status="danger">
+  <nb-card-header>Eliminar Producto</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="deleteProductForm">
+          <label class="label">Escriba <strong>{{product.name}}</strong> para eliminar el producto</label>
+          <input fullWidth nbInput type="text" placeholder="Nombre del producto" formControlName="confirm">
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="submit()" status="danger" nbButton [disabled]="!deleteProductForm.valid">Eliminar</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
