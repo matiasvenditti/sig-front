@@ -19,7 +19,6 @@ export class DeleteSenasaComponent implements OnInit {
   constructor(private fb: FormBuilder, private senasaService: SenasaService, private toasterService: ToasterService, private dialogRef: NbDialogRef<DeleteSenasaComponent>) { }
 
   ngOnInit() {
-    console.log( this.senasa);
     this.deleteSenasaForm = this.fb.group({
       confirm: ['', [Validators.required, equals(new RegExp(this.senasa.businessName))]]
     })
@@ -28,10 +27,11 @@ export class DeleteSenasaComponent implements OnInit {
   submit(){
     this.senasaService.delete(this.senasa.id).subscribe((_) => {
       this.toasterService.showSuccess('Documento eliminado exitosamente', 'Operación Exitosa');
-      this.close();
+      this.dialogRef.close({id: 1});
     }, () => {
       this.toasterService.showError('No se pudo eliminar el documento', 'Error');
       this.close();
+      // this.dialogRef.close({id: this.senasa.id});
     })
   }
 
