@@ -21,16 +21,13 @@ export class SenasaComponent implements OnInit {
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<Senasa>;
 
-  private senasaData: Senasa[] = [
-    // {id: 1, denomination: 'Denomination 1', businessName: 'Business Name 1', country: 'Argentina', certification: true, createdDate: new Date(),  expirationDate: new Date(), product: null},
-    // {id: 2, denomination: 'Denomination 2', businessName: 'Business Name 2', country: 'Chile', certification: false, createdDate: new Date(), expirationDate: new Date(), product: null},
-    // {id: 3, denomination: 'Denomination 3', businessName: 'Business Name 3', country: 'Uruguay', certification: false, createdDate: new Date(), expirationDate: new Date(), product: null},
-    // {id: 4, denomination: 'Denomination 4', businessName: 'Business Name 4', country: 'Argentina', certification: true, createdDate: new Date(), expirationDate: new Date(), product: null},
-  ]
+  private senasaData: Senasa[] = [];
 
   private data: TreeNode<Senasa>[];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<Senasa>, private dialogService: NbDialogService, private senasaService: SenasaService) {}
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<Senasa>,
+    private dialogService: NbDialogService,
+    private senasaService: SenasaService) {}
 
   ngOnInit() {
     this.senasaService.getAll().subscribe(response => {

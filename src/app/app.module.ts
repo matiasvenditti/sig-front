@@ -32,6 +32,7 @@ import { DeleteSenasaComponent } from './senasa/delete-senasa/delete-senasa.comp
 import { ProductComponent } from './product/product.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { DeleteProductComponent } from './product/delete-product/delete-product.component';
+import { InalComponent } from './inal/inal.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DeleteProductComponent } from './product/delete-product/delete-product.
     DeleteSenasaComponent,
     ProductComponent,
     CreateProductComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
+    InalComponent
   ],
   imports: [
     HttpClientModule,

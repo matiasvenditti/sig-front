@@ -21,7 +21,7 @@ export class SidebarComponent implements OnInit {
         },
         {
           title: 'INAL',
-          link: '',
+          link: 'inal',
           icon: 'file'
         },
         {

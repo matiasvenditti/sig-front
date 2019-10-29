@@ -1,0 +1,62 @@
+<div class="section-header">
+  <h2>Inal</h2>
+  <button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
+</div>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource" equalColumnsWidth>
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="denomination">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Denominación</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['denomination']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="rnpa">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Rnpa</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['rnpa']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="batch">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Lote</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['batch']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="businessName">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Creación</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['businessName']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="createdDate">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Creación</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="expirationDate">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Expiración</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['expirationDate']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="product">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row?.data['product']?.name}}</td>
+  </ng-container>
+
+  <ng-container [nbTreeGridColumnDef]="customColumn">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+        <div class="action-container">
+            <nb-icon status="info" icon="edit-outline"></nb-icon>
+            <nb-icon (click)="delete(row.data)" status="danger" icon="trash-outline"></nb-icon>
+        </div>
+      </td>
+  </ng-container>
+
+</table>
