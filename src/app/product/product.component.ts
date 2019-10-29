@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductDTO } from '../model/procuct';
+import { ProductDTO } from '../dto/procuct-dto';
 import { ProductService } from '../services/product/product.service';
 import { NbTreeGridDataSourceBuilder, NbDialogService, NbTreeGridDataSource } from '@nebular/theme';
 import { TreeNode } from '../dto/tree-node';

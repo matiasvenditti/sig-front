@@ -1,10 +1,11 @@
 import { ProductDTO } from './procuct-dto';
 
-export interface SenasaDTO{
+export interface InalDTO {
+    id: number,
     denomination: string,
+    rnpa: number,
+    batch: number,
     businessName: string,
-    country: string,
-    certification: boolean,
-    expirationDate: Date
+    expirationDate: Date,
     product: ProductDTO
 }

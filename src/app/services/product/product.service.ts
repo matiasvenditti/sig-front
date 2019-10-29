@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProductDTO } from 'src/app/model/procuct';
+import { ProductDTO } from 'src/app/dto/procuct-dto';
 import { ProductApi } from './product.routes';
 
 @Injectable({

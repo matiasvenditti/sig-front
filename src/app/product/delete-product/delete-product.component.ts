@@ -4,7 +4,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 import { ToasterService } from 'src/app/services/toaster.service';
 import { NbDialogRef } from '@nebular/theme';
 import { equals } from 'src/app/directives/equals-validator';
-import { ProductDTO } from 'src/app/model/procuct';
+import { ProductDTO } from 'src/app/dto/procuct-dto';
 
 @Component({
   selector: 'app-delete-product',
