@@ -42,8 +42,10 @@ export class ProductComponent implements OnInit {
   delete(product: ProductDTO) {
     this.dialogService.open(DeleteProductComponent, {context: {product: product}})
     .onClose.subscribe((deletedId: number) => {
+      if(deletedId) {
         this.productData = this.productData.filter(product => product.id !== deletedId);
         this.initData();
+      }
     });
   }
 

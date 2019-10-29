@@ -34,7 +34,6 @@ export class DeleteSenasaComponent implements OnInit {
     }, () => {
       this.toasterService.showError('No se pudo eliminar el documento', 'Error');
       this.close();
-      // this.dialogRef.close({id: this.senasa.id});
     })
   }
 

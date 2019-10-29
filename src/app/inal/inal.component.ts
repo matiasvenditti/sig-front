@@ -4,6 +4,7 @@ import { NbTreeGridDataSourceBuilder, NbDialogService, NbTreeGridDataSource } fr
 import { InalService } from '../services/inal/inal.service';
 import { TreeNode } from '../dto/tree-node';
 import { CreateInalComponent } from './create-inal/create-inal.component';
+import { DeleteInalComponent } from './delete-inal/delete-inal.component';
 
 @Component({
   selector: 'app-inal',
@@ -41,11 +42,13 @@ export class InalComponent implements OnInit {
   }
 
   delete(inal: InalDTO) {
-    // this.dialogService.open(DeleteSenasaComponent, {context: {inal: inal}})
-    // .onClose.subscribe((deletedId: number) => {
-    //     this.inalData = this.inalData.filter(senasa => senasa.id !== deletedId);
-    //     this.initData();
-    // });
+    this.dialogService.open(DeleteInalComponent, {context: {inal: inal}})
+    .onClose.subscribe((deletedId: number) => {
+      if(deletedId) {
+        this.inalData = this.inalData.filter(inal => inal.id !== deletedId);
+        this.initData();
+      }
+    });
   }
 
   initData() {

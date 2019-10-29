@@ -47,8 +47,10 @@ export class SenasaComponent implements OnInit {
   delete(senasa: Senasa) {
     this.dialogService.open(DeleteSenasaComponent, {context: {senasa: senasa}})
     .onClose.subscribe((deletedId: number) => {
+      if (deletedId) {
         this.senasaData = this.senasaData.filter(senasa => senasa.id !== deletedId);
         this.initData();
+      }
     });
   }
 

@@ -1,0 +1,16 @@
+<nb-card status="danger">
+  <nb-card-header>Eliminar Inal</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="deleteInalForm">
+          <label class="label">Escriba <strong>{{inal.businessName}}</strong> para eliminar el documento</label>
+          <input fullWidth nbInput type="text" placeholder="Nombre del documento" formControlName="confirm">
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="submit()" status="danger" nbButton [disabled]="!deleteInalForm.valid">Eliminar</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
