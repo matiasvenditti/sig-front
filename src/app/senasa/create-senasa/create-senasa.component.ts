@@ -18,11 +18,7 @@ export class CreateSenasaComponent implements OnInit {
   private senasaForm: FormGroup;
   private countries: string[];
 
-  private products: ProductMock[] = [
-    // new ProductMock(1, 'Product 1', 'Grams'),
-    // new ProductMock(2, 'Product 2', 'Tons'),
-    // new ProductMock(3, 'Product 1', 'Liters'),
-  ];
+  private products: ProductMock[] = [];
 
   constructor(private fb: FormBuilder, 
     private senasaService: SenasaService, 
@@ -56,7 +52,6 @@ export class CreateSenasaComponent implements OnInit {
 
   submit() {
     this.senasaService.create(this.senasaForm.value).subscribe(res => {
-      console.log(this.senasaForm.value);
       this.toasterService.showSuccess('Documento creado exitosamente','Operación Exitosa');
       this.dialogRef.close(res);
     }, () => {

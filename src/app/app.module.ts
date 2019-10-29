@@ -33,6 +33,7 @@ import { ProductComponent } from './product/product.component';
 import { CreateProductComponent } from './product/create-product/create-product.component';
 import { DeleteProductComponent } from './product/delete-product/delete-product.component';
 import { InalComponent } from './inal/inal.component';
+import { CreateInalComponent } from './inal/create-inal/create-inal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { InalComponent } from './inal/inal.component';
     ProductComponent,
     CreateProductComponent,
     DeleteProductComponent,
-    InalComponent
+    InalComponent,
+    CreateInalComponent
   ],
   imports: [
     HttpClientModule,
@@ -76,7 +78,8 @@ import { InalComponent } from './inal/inal.component';
     CreateSenasaComponent,
     DeleteSenasaComponent,
     CreateProductComponent,
-    DeleteProductComponent
+    DeleteProductComponent,
+    CreateInalComponent
   ]
 })
 export class AppModule { }

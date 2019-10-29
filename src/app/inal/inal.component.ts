@@ -3,6 +3,7 @@ import { InalDTO } from '../dto/inal-dto';
 import { NbTreeGridDataSourceBuilder, NbDialogService, NbTreeGridDataSource } from '@nebular/theme';
 import { InalService } from '../services/inal/inal.service';
 import { TreeNode } from '../dto/tree-node';
+import { CreateInalComponent } from './create-inal/create-inal.component';
 
 @Component({
   selector: 'app-inal',
@@ -33,10 +34,10 @@ export class InalComponent implements OnInit {
   }
 
   open() {
-    // this.dialogService.open(CreateSenasaComponent).onClose.subscribe((senasa: any) => {
-    //   this.inalData.push(senasa);
-    //   this.initData();
-    // });
+    this.dialogService.open(CreateInalComponent).onClose.subscribe((senasa: any) => {
+      this.inalData.push(senasa);
+      this.initData();
+    });
   }
 
   delete(inal: InalDTO) {
