@@ -42,7 +42,7 @@ export class InalComponent implements OnInit {
   }
 
   delete(inal: InalDTO) {
-    this.dialogService.open(DeleteInalComponent, {context: {inal: inal}})
+    this.dialogService.open(DeleteInalComponent, {context: {inal: inal} as Partial<any>})
     .onClose.subscribe((deletedId: number) => {
       if(deletedId) {
         this.inalData = this.inalData.filter(inal => inal.id !== deletedId);
