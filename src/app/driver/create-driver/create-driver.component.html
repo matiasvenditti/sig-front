@@ -5,7 +5,7 @@
       <form class="form" [formGroup]="driverForm">
           <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="firstName">
           <input class="input" fullWidth nbInput type="text" placeholder="Apellido" formControlName="lastName">
-          <input class="input" fullWidth nbInput type="number" placeholder="DNI" formControlName="dni">
+          <input class="input" min="0" fullWidth nbInput type="number" placeholder="DNI" formControlName="dni">
           <input class="input" fullWidth nbInput placeholder="Expiración Licencia" [nbDatepicker]="datepicker" formControlName="licenseExpirationDate">
           <nb-datepicker #datepicker></nb-datepicker>
       </form>

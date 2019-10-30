@@ -4,8 +4,8 @@
 
       <form class="form" [formGroup]="inalForm">
           <input class="input" fullWidth nbInput type="text" placeholder="Denominación" formControlName="denomination">
-          <input class="input" fullWidth nbInput type="number" placeholder="RNPA" formControlName="rnpa">
-          <input class="input" fullWidth nbInput type="number" placeholder="Lote" formControlName="batch">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="RNPA" formControlName="rnpa">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Lote" formControlName="batch">
 
           <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="businessName">
 

@@ -1,3 +1,24 @@
-<p>
-  update-order works!
-</p>
+<nb-card status="primary">
+  <nb-card-header>Modificar Orden de Compra</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="orderForm">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
+
+          <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
+          <nb-datepicker [min]="min" #datepicker></nb-datepicker>
+        
+          <nb-select formControlName="product" class="input" fullWidth placeholder="Producto">
+            <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
+          </nb-select>
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!orderForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

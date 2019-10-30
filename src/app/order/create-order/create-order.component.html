@@ -3,8 +3,8 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="orderForm">
-          <input class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
-          <input class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
+          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
 
           <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
           <nb-datepicker [min]="min" #datepicker></nb-datepicker>
