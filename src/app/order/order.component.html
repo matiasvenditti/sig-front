@@ -1,0 +1,47 @@
+<div class="section-header">
+  <h2>Camiones</h2>
+  <button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
+</div>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource">
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="createdDate">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha Creación</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="amount">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['amount']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="price">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Precio</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['price']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="product">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
+  </ng-container>
+
+  <ng-container [nbTreeGridColumnDef]="customColumn">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+        <div class="action-container">
+            <nb-icon (click)="update(row.data)" status="info" icon="edit-outline"></nb-icon>
+            <nb-icon (click)="delete(row.data)" status="danger" icon="trash-outline"></nb-icon>
+        </div>
+      </td>
+  </ng-container>
+
+</table>

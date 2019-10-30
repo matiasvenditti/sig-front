@@ -46,6 +46,10 @@ import { TruckComponent } from './truck/truck.component';
 import { CreateTruckComponent } from './truck/create-truck/create-truck.component';
 import { UpdateTruckComponent } from './truck/update-truck/update-truck.component';
 import { DeleteTruckComponent } from './truck/delete-truck/delete-truck.component';
+import { OrderComponent } from './order/order.component';
+import { CreateOrderComponent } from './order/create-order/create-order.component';
+import { UpdateOrderComponent } from './order/update-order/update-order.component';
+import { DeleteOrderComponent } from './order/delete-order/delete-order.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { DeleteTruckComponent } from './truck/delete-truck/delete-truck.componen
     TruckComponent,
     CreateTruckComponent,
     UpdateTruckComponent,
-    DeleteTruckComponent
+    DeleteTruckComponent,
+    OrderComponent,
+    CreateOrderComponent,
+    UpdateOrderComponent,
+    DeleteOrderComponent
   ],
   imports: [
     HttpClientModule,
@@ -113,7 +121,10 @@ import { DeleteTruckComponent } from './truck/delete-truck/delete-truck.componen
     UpdateDriverComponent,
     CreateTruckComponent,
     DeleteTruckComponent,
-    UpdateTruckComponent
+    UpdateTruckComponent,
+    CreateOrderComponent,
+    DeleteOrderComponent,
+    UpdateOrderComponent
   ]
 })
 export class AppModule { }
