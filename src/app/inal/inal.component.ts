@@ -5,6 +5,7 @@ import { InalService } from '../services/inal/inal.service';
 import { TreeNode } from '../dto/tree-node';
 import { CreateInalComponent } from './create-inal/create-inal.component';
 import { DeleteInalComponent } from './delete-inal/delete-inal.component';
+import { UpdateInalComponent } from './update-inal/update-inal.component';
 
 @Component({
   selector: 'app-inal',
@@ -48,6 +49,17 @@ export class InalComponent implements OnInit {
     .onClose.subscribe((deletedId: number) => {
       if(deletedId) {
         this.inalData = this.inalData.filter(inal => inal.id !== deletedId);
+        this.initData();
+      }
+    });
+  }
+
+  update(inal: InalDTO) {
+    this.dialogService.open(UpdateInalComponent, {context: {inal: inal} as Partial<any>})
+    .onClose.subscribe((update: InalDTO) => {
+      if(update) {
+        const index = this.inalData.findIndex(inal => inal.id === update.id);
+        this.inalData[index] = update;
         this.initData();
       }
     });

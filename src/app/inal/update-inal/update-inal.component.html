@@ -1,0 +1,27 @@
+<nb-card status="primary">
+  <nb-card-header>Modificar Documento Inal</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="inalForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Denominación" formControlName="denomination">
+          <input class="input" fullWidth nbInput type="number" placeholder="RNPA" formControlName="rnpa">
+          <input class="input" fullWidth nbInput type="number" placeholder="Lote" formControlName="batch">
+
+          <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="businessName">
+
+          <nb-select formControlName="product" class="input" fullWidth placeholder="Producto">
+            <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
+          </nb-select>
+
+          <input class="input" fullWidth nbInput placeholder="Expiración" [nbDatepicker]="datepicker" formControlName="expirationDate">
+          <nb-datepicker [min]="min" #datepicker></nb-datepicker>
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!inalForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

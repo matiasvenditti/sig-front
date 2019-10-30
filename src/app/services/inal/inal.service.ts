@@ -21,4 +21,8 @@ export class InalService {
   delete(inalId: number) {
     return this.http.delete(InalApi.delete.delete(inalId));
   }
+
+  update(inalId: number, inal: InalDTO) {
+    return this.http.put(InalApi.put.update(inalId), inal);
+  }
 }

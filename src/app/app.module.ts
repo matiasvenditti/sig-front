@@ -41,6 +41,7 @@ import { DeleteDriverComponent } from './driver/delete-driver/delete-driver.comp
 import { UpdateProductComponent } from './product/update-product/update-product.component';
 import { UpdateDriverComponent } from './driver/update-driver/update-driver.component';
 import { UpdateSenasaComponent } from './senasa/update-senasa/update-senasa.component';
+import { UpdateInalComponent } from './inal/update-inal/update-inal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UpdateSenasaComponent } from './senasa/update-senasa/update-senasa.comp
     DeleteDriverComponent,
     UpdateProductComponent,
     UpdateDriverComponent,
-    UpdateSenasaComponent
+    UpdateSenasaComponent,
+    UpdateInalComponent
   ],
   imports: [
     HttpClientModule,
@@ -97,6 +99,7 @@ import { UpdateSenasaComponent } from './senasa/update-senasa/update-senasa.comp
     UpdateProductComponent,
     CreateInalComponent,
     DeleteInalComponent,
+    UpdateInalComponent,
     CreateDriverComponent,
     DeleteDriverComponent,
     UpdateDriverComponent

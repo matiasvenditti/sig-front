@@ -53,7 +53,7 @@
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
       <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
         <div class="action-container">
-            <nb-icon status="info" icon="edit-outline"></nb-icon>
+            <nb-icon (click)="update(row.data)" status="info" icon="edit-outline"></nb-icon>
             <nb-icon (click)="delete(row.data)" status="danger" icon="trash-outline"></nb-icon>
         </div>
       </td>
