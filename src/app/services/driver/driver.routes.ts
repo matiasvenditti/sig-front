@@ -1,8 +1,7 @@
-import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment.prod";
+const apiUrl = `${environment.apiUrl}/drivers`;
 
-const apiUrl = `${environment}/drivers`;
-
-export const driverApi = {
+export const DriverApi = {
     get: {
         findAll: () => `${apiUrl}`,
         findOne: (id: number) => `${apiUrl}/${id}`

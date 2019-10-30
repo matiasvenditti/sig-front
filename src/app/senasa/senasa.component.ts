@@ -39,8 +39,10 @@ export class SenasaComponent implements OnInit {
 
   open() {
     this.dialogService.open(CreateSenasaComponent).onClose.subscribe((senasa: any) => {
-      this.senasaData.push(senasa);
-      this.initData();
+      if(senasa){
+        this.senasaData.push(senasa);
+        this.initData();
+      }
     });
   }
 

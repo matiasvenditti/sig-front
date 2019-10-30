@@ -33,6 +33,11 @@ export class SidebarComponent implements OnInit {
           title: 'Productos',
           link: 'products',
           icon: 'shopping-bag'
+        },
+        {
+          title: 'Conductores',
+          link: 'drivers',
+          icon: 'person'
         }
       ],
     },

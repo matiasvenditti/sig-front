@@ -35,9 +35,11 @@ export class InalComponent implements OnInit {
   }
 
   open() {
-    this.dialogService.open(CreateInalComponent).onClose.subscribe((senasa: any) => {
-      this.inalData.push(senasa);
-      this.initData();
+    this.dialogService.open(CreateInalComponent).onClose.subscribe((inal: any) => {
+      if(inal) {
+        this.inalData.push(inal);
+        this.initData();
+      }
     });
   }
 

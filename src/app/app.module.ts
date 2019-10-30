@@ -36,6 +36,8 @@ import { InalComponent } from './inal/inal.component';
 import { CreateInalComponent } from './inal/create-inal/create-inal.component';
 import { DeleteInalComponent } from './inal/delete-inal/delete-inal.component';
 import { DriverComponent } from './driver/driver.component';
+import { CreateDriverComponent } from './driver/create-driver/create-driver.component';
+import { DeleteDriverComponent } from './driver/delete-driver/delete-driver.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { DriverComponent } from './driver/driver.component';
     InalComponent,
     CreateInalComponent,
     DeleteInalComponent,
-    DriverComponent
+    DriverComponent,
+    CreateDriverComponent,
+    DeleteDriverComponent
   ],
   imports: [
     HttpClientModule,
@@ -84,7 +88,9 @@ import { DriverComponent } from './driver/driver.component';
     CreateProductComponent,
     DeleteProductComponent,
     CreateInalComponent,
-    DeleteInalComponent
+    DeleteInalComponent,
+    CreateDriverComponent,
+    DeleteDriverComponent
   ]
 })
 export class AppModule { }

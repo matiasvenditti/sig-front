@@ -34,8 +34,10 @@ export class ProductComponent implements OnInit {
 
   open() {
     this.dialogService.open(CreateProductComponent).onClose.subscribe((product: ProductDTO) => {
-      this.productData.push(product);
-      this.initData();
+      if(product) {
+        this.productData.push(product);
+        this.initData();
+      }
     });
   }
 
