@@ -7,6 +7,7 @@ import { SenasaService } from 'src/app/services/senasa/senasa.service';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { ToasterService } from 'src/app/services/toaster.service';
 import { ProductService } from 'src/app/services/product/product.service';
+import { greaterThanToday } from 'src/app/directives/greater-date-validator';
 
 @Component({
   selector: 'app-create-senasa',
@@ -32,7 +33,7 @@ export class CreateSenasaComponent implements OnInit {
       businessName: ['', Validators.required],
       certification: [false, Validators.requiredTrue],
       country: ['', Validators.required],
-      expirationDate: [null, Validators.required],
+      expirationDate: [null, [Validators.required, greaterThanToday(new Date())]],
       // componentes: ['', Validators.required],
       product: [null, Validators.required]
     });

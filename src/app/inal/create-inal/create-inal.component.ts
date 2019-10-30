@@ -5,6 +5,7 @@ import { NbDialogRef } from '@nebular/theme';
 import { ToasterService } from 'src/app/services/toaster.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProductDTO } from 'src/app/dto/procuct-dto';
+import { greaterThanToday } from 'src/app/directives/greater-date-validator';
 
 @Component({
   selector: 'app-create-inal',
@@ -29,7 +30,7 @@ export class CreateInalComponent implements OnInit {
       rnpa: [null, Validators.required],
       batch: [null, [Validators.required, Validators.min(0), Validators.max(500)]],
       businessName: ['', Validators.required],
-      expirationDate: [null, Validators.required],
+      expirationDate: [null, [Validators.required, greaterThanToday(new Date())]],
       product: [null, Validators.required]
     });
 

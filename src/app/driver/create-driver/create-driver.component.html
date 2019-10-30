@@ -1,3 +1,20 @@
-<p>
-  create-driver works!
-</p>
+<nb-card status="primary">
+  <nb-card-header>Crear Conductor</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="driverForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="firstName">
+          <input class="input" fullWidth nbInput type="text" placeholder="Apellido" formControlName="lastName">
+          <input class="input" fullWidth nbInput type="number" placeholder="DNI" formControlName="dni">
+          <input class="input" fullWidth nbInput placeholder="Expiración Licencia" [nbDatepicker]="datepicker" formControlName="licenseExpirationDate">
+          <nb-datepicker #datepicker></nb-datepicker>
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!driverForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
