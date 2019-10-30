@@ -21,4 +21,8 @@ export class DriverService {
   delete(driverId: number) {
     return this.http.delete(DriverApi.delete.delete(driverId));
   }
+
+  update(driverId: number, driver: DriverDTO) {
+    return this.http.put(DriverApi.put.update(driverId), driver);
+  }
 }

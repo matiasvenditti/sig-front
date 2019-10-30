@@ -5,6 +5,7 @@ import { DriverService } from '../services/driver/driver.service';
 import { TreeNode } from '../dto/tree-node';
 import { CreateDriverComponent } from './create-driver/create-driver.component';
 import { DeleteDriverComponent } from './delete-driver/delete-driver.component';
+import { UpdateDriverComponent } from './update-driver/update-driver.component';
 
 @Component({
   selector: 'app-driver',
@@ -51,6 +52,17 @@ export class DriverComponent implements OnInit {
         this.initData();
       }
     });
+  }
+
+  update(driver: DriverDTO) {
+    this.dialogService.open(UpdateDriverComponent, {context: {driver: driver} as Partial<any>})
+    .onClose.subscribe((update: DriverDTO) => {
+      if(update) {
+        const index: number = this.driverData.findIndex(driver => driver.id === update.id);
+        this.driverData[index] = update;
+        this.initData();
+      }
+    })
   }
 
   initData() {

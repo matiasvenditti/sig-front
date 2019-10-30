@@ -39,6 +39,7 @@ import { DriverComponent } from './driver/driver.component';
 import { CreateDriverComponent } from './driver/create-driver/create-driver.component';
 import { DeleteDriverComponent } from './driver/delete-driver/delete-driver.component';
 import { UpdateProductComponent } from './product/update-product/update-product.component';
+import { UpdateDriverComponent } from './driver/update-driver/update-driver.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UpdateProductComponent } from './product/update-product/update-product.
     DriverComponent,
     CreateDriverComponent,
     DeleteDriverComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    UpdateDriverComponent
   ],
   imports: [
     HttpClientModule,
@@ -93,7 +95,8 @@ import { UpdateProductComponent } from './product/update-product/update-product.
     CreateInalComponent,
     DeleteInalComponent,
     CreateDriverComponent,
-    DeleteDriverComponent
+    DeleteDriverComponent,
+    UpdateDriverComponent
   ]
 })
 export class AppModule { }
