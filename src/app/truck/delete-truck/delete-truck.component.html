@@ -1,3 +1,16 @@
-<p>
-  delete-truck works!
-</p>
+<nb-card status="danger">
+  <nb-card-header>Eliminar Camión</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="deleteProductForm">
+          <label class="label">Escriba <strong>{{truck.enrollment}}</strong> para eliminar el camión</label>
+          <input fullWidth nbInput type="text" placeholder="Patente del camión" formControlName="confirm">
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="submit()" status="danger" nbButton [disabled]="!deleteProductForm.valid">Eliminar</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

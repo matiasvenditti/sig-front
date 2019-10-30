@@ -34,7 +34,6 @@ export class DeleteProductComponent implements OnInit {
     }, () => {
       this.toasterService.showError('No se pudo eliminar el producto', 'Error');
       this.close();
-      // this.dialogRef.close({id: this.senasa.id});
     })
   }
 

@@ -1,3 +1,22 @@
-<p>
-  update-truck works!
-</p>
+<nb-card status="primary">
+  <nb-card-header>Modificar Camión</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="truckForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Marca" formControlName="brand">
+          <input class="input" fullWidth nbInput type="text" placeholder="Patente" formControlName="enrollment">
+          <input class="input" fullWidth nbInput type="text" placeholder="Modelo" formControlName="model">
+        
+          <nb-select formControlName="driver" class="input" fullWidth placeholder="Conductor">
+            <nb-option *ngFor="let driver of drivers" [value]="driver">{{driver.lastName}}</nb-option>
+          </nb-select>
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!truckForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
