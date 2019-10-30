@@ -15,6 +15,7 @@ export class CreateOrderComponent implements OnInit {
 
   private orderForm: FormGroup;
   private products: ProductDTO[] = [];
+  private min: Date;
 
   constructor(private fb: FormBuilder,
     private productService: ProductService,
@@ -23,10 +24,13 @@ export class CreateOrderComponent implements OnInit {
     private orderService: OrderService) { }
 
   ngOnInit() {
+    this.min = new Date();
+    
     this.orderForm = this.fb.group({
       amount: [null, [Validators.required, Validators.min(0)]],
       price: [null, [Validators.required, Validators.min(0)]],
-      product: [null, Validators.required]
+      product: [null, Validators.required],
+      createdDate: [null, Validators.required]
     });
 
     this.productService.getAll().subscribe(res => {

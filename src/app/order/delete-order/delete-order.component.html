@@ -1,3 +1,16 @@
-<p>
-  delete-order works!
-</p>
+<nb-card status="danger">
+  <nb-card-header>Eliminar Orden de Compra</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="deleteOrderForm">
+          <label class="label">Escriba <strong>{{order.id}}</strong> para eliminar la orden de compra</label>
+          <input fullWidth nbInput type="text" placeholder="ID de la Orden" formControlName="confirm">
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="submit()" status="danger" nbButton [disabled]="!deleteOrderForm.valid">Eliminar</button>
+    </div>
+  </nb-card-footer>
+</nb-card>
