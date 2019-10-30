@@ -14,7 +14,10 @@ export class CreateProductComponent implements OnInit {
   private units: string[];
   private productForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private dialogRef: NbDialogRef<CreateProductComponent>, private toasterService: ToasterService) { }
+  constructor(private fb: FormBuilder,
+    private productService: ProductService,
+    private dialogRef: NbDialogRef<CreateProductComponent>,
+    private toasterService: ToasterService) { }
 
   ngOnInit() {
     this.productForm = this.fb.group({

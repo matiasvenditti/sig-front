@@ -14,11 +14,15 @@ export class ProductService {
     return this.http.get<ProductDTO[]>(ProductApi.get.findAll());
   }
 
-  create(senasa: ProductDTO) {
-    return this.http.post<ProductDTO>(ProductApi.post.create(), senasa);
+  create(product: ProductDTO) {
+    return this.http.post<ProductDTO>(ProductApi.post.create(), product);
   }
 
-  delete(senasaId: number) {
-    return this.http.delete(ProductApi.delete.delete(senasaId));
+  delete(productId: number) {
+    return this.http.delete(ProductApi.delete.delete(productId));
+  }
+
+  update(productId: number, product: ProductDTO) {
+    return this.http.put(ProductApi.put.update(productId), product);
   }
 }

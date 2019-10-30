@@ -5,6 +5,7 @@ import { NbTreeGridDataSourceBuilder, NbDialogService, NbTreeGridDataSource } fr
 import { TreeNode } from '../dto/tree-node';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 @Component({
   selector: 'app-product',
@@ -50,6 +51,18 @@ export class ProductComponent implements OnInit {
       }
     });
   }
+
+  update(product: ProductDTO) {
+    this.dialogService.open(UpdateProductComponent, {context: {product: product} as Partial<any>})
+    .onClose.subscribe((update: ProductDTO) => {
+      if(update) {
+        const index: number = this.productData.findIndex(product => product.id === update.id);
+        this.productData[index] = update;
+        this.initData();
+      }
+    })
+  }
+
 
   initData() {
     this.data = this.productData.map(elem => {return {data: elem}});
