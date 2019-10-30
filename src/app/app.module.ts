@@ -35,6 +35,7 @@ import { DeleteProductComponent } from './product/delete-product/delete-product.
 import { InalComponent } from './inal/inal.component';
 import { CreateInalComponent } from './inal/create-inal/create-inal.component';
 import { DeleteInalComponent } from './inal/delete-inal/delete-inal.component';
+import { DriverComponent } from './driver/driver.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DeleteInalComponent } from './inal/delete-inal/delete-inal.component';
     DeleteProductComponent,
     InalComponent,
     CreateInalComponent,
-    DeleteInalComponent
+    DeleteInalComponent,
+    DriverComponent
   ],
   imports: [
     HttpClientModule,
