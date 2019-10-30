@@ -10,7 +10,7 @@ export const SenasaApi = {
         create: () => `${apiUrl}`
     },
     put: {
-
+        update: (id: number) => `${apiUrl}/${id}`
     },
     delete: {
         delete: (id: number) => `${apiUrl}/${id}`

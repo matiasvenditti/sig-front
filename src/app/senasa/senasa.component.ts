@@ -6,6 +6,7 @@ import { DeleteSenasaComponent } from './delete-senasa/delete-senasa.component';
 import { Senasa } from '../model/senasa';
 import { SenasaDTO } from '../dto/senasa-dto';
 import { TreeNode } from '../dto/tree-node';
+import { UpdateSenasaComponent } from './update-senasa/update-senasa.component';
 
 @Component({
   selector: 'app-senasa',
@@ -54,6 +55,17 @@ export class SenasaComponent implements OnInit {
         this.initData();
       }
     });
+  }
+
+  update(senasa: Senasa) {
+    this.dialogService.open(UpdateSenasaComponent, {context: {senasa: senasa} as Partial<any>})
+    .onClose.subscribe((update: Senasa) => {
+      if (update) {
+        const index = this.senasaData.findIndex(senasa => senasa.id === update.id);
+        this.senasaData[index] = update;
+        this.initData();
+      }
+    })
   }
 
   initData() {

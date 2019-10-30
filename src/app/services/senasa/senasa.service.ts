@@ -23,4 +23,8 @@ export class SenasaService {
   delete(senasaId: number) {
     return this.http.delete(SenasaApi.delete.delete(senasaId));
   }
+
+  update(senasaId: number, senasa: SenasaDTO) {
+    return this.http.put(SenasaApi.put.update(senasaId), senasa);
+  }
 }

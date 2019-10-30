@@ -39,12 +39,12 @@
 
     <ng-container nbTreeGridColumnDef="createdDate">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Creación</th>
-      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate'] | date: 'short'}}</td>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate'] | date: 'shortDate'}}</td>
     </ng-container>
 
     <ng-container nbTreeGridColumnDef="expirationDate">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha de Expiración</th>
-      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['expirationDate'] | date: 'short'}}</td>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['expirationDate'] | date: 'shortDate'}}</td>
     </ng-container>
 
     <ng-container nbTreeGridColumnDef="product">
@@ -56,7 +56,7 @@
         <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
         <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
           <div class="action-container">
-              <nb-icon status="info" icon="edit-outline"></nb-icon>
+              <nb-icon (click)="update(row.data)" status="info" icon="edit-outline"></nb-icon>
               <nb-icon (click)="delete(row.data)" status="danger" icon="trash-outline"></nb-icon>
           </div>
         </td>

@@ -31,7 +31,7 @@ export class CreateSenasaComponent implements OnInit {
     this.senasaForm = this.fb.group({
       denomination: ['', Validators.required],
       businessName: ['', Validators.required],
-      certification: [false, Validators.requiredTrue],
+      certification: [false, Validators.required],
       country: ['', Validators.required],
       expirationDate: [null, [Validators.required, greaterThanToday(new Date())]],
       // componentes: ['', Validators.required],
