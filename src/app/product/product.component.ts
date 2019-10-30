@@ -23,7 +23,9 @@ export class ProductComponent implements OnInit {
 
   private productData: ProductDTO[] = [];
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<ProductDTO>, private dialogService: NbDialogService, private productService: ProductService) { }
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<ProductDTO>,
+    private dialogService: NbDialogService,
+    private productService: ProductService) { }
 
   ngOnInit() {
     this.productService.getAll().subscribe(response => {

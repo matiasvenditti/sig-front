@@ -1,0 +1,47 @@
+<div class="section-header">
+  <h2>Camiones</h2>
+  <button class="float-right" nbButton (click)="open()"><nb-icon icon="plus-outline"></nb-icon> Crear Nuevo</button>
+</div>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource">
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="brand">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Marca</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['brand']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="enrollment">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Patente</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['enrollment']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="model">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Modelo</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['model']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="driver">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Conductor</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['driver'].firstName}}</td>
+  </ng-container>
+
+  <ng-container [nbTreeGridColumnDef]="customColumn">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+        <div class="action-container">
+            <nb-icon (click)="update(row.data)" status="info" icon="edit-outline"></nb-icon>
+            <nb-icon (click)="delete(row.data)" status="danger" icon="trash-outline"></nb-icon>
+        </div>
+      </td>
+  </ng-container>
+
+</table>

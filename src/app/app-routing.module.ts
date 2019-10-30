@@ -5,13 +5,15 @@ import { SenasaComponent } from './senasa/senasa.component';
 import { ProductComponent } from './product/product.component';
 import { InalComponent } from './inal/inal.component';
 import { DriverComponent } from './driver/driver.component';
+import { TruckComponent } from './truck/truck.component';
 
 const routes: Routes = [
   {path: 'process', component: MenuComponent},
   {path: 'senasa', component: SenasaComponent},
   {path: 'products', component: ProductComponent},
   {path: 'inal', component: InalComponent},
-  {path: 'drivers', component: DriverComponent}
+  {path: 'drivers', component: DriverComponent},
+  {path: 'trucks', component: TruckComponent}
 ];
 
 @NgModule({

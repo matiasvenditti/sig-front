@@ -42,6 +42,10 @@ import { UpdateProductComponent } from './product/update-product/update-product.
 import { UpdateDriverComponent } from './driver/update-driver/update-driver.component';
 import { UpdateSenasaComponent } from './senasa/update-senasa/update-senasa.component';
 import { UpdateInalComponent } from './inal/update-inal/update-inal.component';
+import { TruckComponent } from './truck/truck.component';
+import { CreateTruckComponent } from './truck/create-truck/create-truck.component';
+import { UpdateTruckComponent } from './truck/update-truck/update-truck.component';
+import { DeleteTruckComponent } from './truck/delete-truck/delete-truck.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +67,11 @@ import { UpdateInalComponent } from './inal/update-inal/update-inal.component';
     UpdateProductComponent,
     UpdateDriverComponent,
     UpdateSenasaComponent,
-    UpdateInalComponent
+    UpdateInalComponent,
+    TruckComponent,
+    CreateTruckComponent,
+    UpdateTruckComponent,
+    DeleteTruckComponent
   ],
   imports: [
     HttpClientModule,
@@ -102,7 +110,10 @@ import { UpdateInalComponent } from './inal/update-inal/update-inal.component';
     UpdateInalComponent,
     CreateDriverComponent,
     DeleteDriverComponent,
-    UpdateDriverComponent
+    UpdateDriverComponent,
+    CreateTruckComponent,
+    DeleteTruckComponent,
+    UpdateTruckComponent
   ]
 })
 export class AppModule { }

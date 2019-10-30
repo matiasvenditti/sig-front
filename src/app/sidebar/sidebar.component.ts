@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
       children: [
         {
           title: 'Camiones',
-          link: '', // goes into angular `routerLink`
+          link: 'trucks',
           icon: 'car'
         },
         {
