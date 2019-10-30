@@ -3,11 +3,19 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="productForm">
-          <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="name">
+          <input [status]="get('name').invalid && (get('name').dirty || get('name').touched) ? 'danger' : 'primary'" class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="name">
+          
+          <div *ngIf="get('name').invalid && (get('name').dirty || get('name').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('name').errors.required">El campo <strong>Nombre</strong> es requerido</div>
+          </div>
         
-          <nb-select formControlName="unit" class="input" fullWidth placeholder="Unidades">
+          <nb-select [status]="get('unit').invalid && (get('unit').dirty || get('unit').touched) ? 'danger' : 'primary'" formControlName="unit" class="input" fullWidth placeholder="Unidades">
             <nb-option *ngFor="let unit of units" [value]="unit">{{unit}}</nb-option>
           </nb-select>
+          
+          <div *ngIf="get('unit').invalid && (get('unit').dirty || get('unit').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('unit').errors.required">El campo <strong>Unidades</strong> es requerido</div>
+          </div>
       </form>
 
   </nb-card-body>

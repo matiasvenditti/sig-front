@@ -49,4 +49,8 @@ export class UpdateProductComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  get(name: string) {
+    return this.productForm.get(name);
+  }
+
 }

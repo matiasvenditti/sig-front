@@ -46,6 +46,11 @@ export class CreateProductComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
+  get(name: string) {
+    console.log(this.productForm.get(name));
+    return this.productForm.get(name);
+  }
  
 
 }
