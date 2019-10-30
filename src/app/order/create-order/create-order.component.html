@@ -3,15 +3,34 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="orderForm">
-          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
-          <input min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
+          <input [status]="get('amount').invalid && (get('amount').dirty || get('amount').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
+          
+          <div *ngIf="get('amount').invalid && (get('amount').dirty || get('amount').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('amount').errors.required">El campo <strong>Cantidad</strong> es requerido</div>
+            <div class="input-error" *ngIf="get('amount').errors.min">El campo <strong>Cantidad</strong> tiene un valor minimo de 0</div>
+          </div>
 
-          <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
+          <input [status]="get('price').invalid && (get('price').dirty || get('price').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
+
+          <div *ngIf="get('price').invalid && (get('price').dirty || get('price').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('price').errors.required">El campo <strong>Precio</strong> es requerido</div>
+            <div class="input-error" *ngIf="get('price').errors.min">El campo <strong>Precio</strong> tiene un valor minimo de 0</div>
+          </div>
+
+          <input [status]="get('createdDate').invalid && (get('craetedDate').dirty || get('createdDate').touched) ? 'danger' : 'primary'" class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
           <nb-datepicker [min]="min" #datepicker></nb-datepicker>
+
+          <div *ngIf="get('createdDate').invalid && (get('createdDate').dirty || get('createdDate').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('createdDate').errors.required">El campo <strong>Fecha de Emisión</strong> es requerido</div>
+          </div>
         
-          <nb-select formControlName="product" class="input" fullWidth placeholder="Producto">
+          <nb-select [status]="get('product').invalid && (get('product').dirty || get('product').touched) ? 'danger' : 'primary'" formControlName="product" class="input" fullWidth placeholder="Producto">
             <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
           </nb-select>
+
+          <div *ngIf="get('product').invalid && (get('product').dirty || get('product').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('product').errors.required">El campo <strong>Producto</strong> es requerido</div>
+          </div>
       </form>
 
   </nb-card-body>

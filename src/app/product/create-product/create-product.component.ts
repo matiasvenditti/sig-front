@@ -48,7 +48,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   get(name: string) {
-    console.log(this.productForm.get(name));
     return this.productForm.get(name);
   }
  
