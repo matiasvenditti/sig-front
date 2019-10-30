@@ -36,8 +36,10 @@ export class DriverComponent implements OnInit {
 
   open() {
     this.dialogService.open(CreateDriverComponent).onClose.subscribe((driver: DriverDTO) => {
-      this.driverData.push(driver);
-      this.initData();
+      if(driver) {
+        this.driverData.push(driver);
+        this.initData();
+      }
     });
   }
 
