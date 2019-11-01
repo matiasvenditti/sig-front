@@ -7,6 +7,7 @@ import { InalComponent } from './inal/inal.component';
 import { DriverComponent } from './driver/driver.component';
 import { TruckComponent } from './truck/truck.component';
 import { OrderComponent } from './order/order.component';
+import {SupplierComponent} from './supplier/supplier.component';
 
 const routes: Routes = [
   {path: 'process', component: MenuComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'inal', component: InalComponent},
   {path: 'drivers', component: DriverComponent},
   {path: 'trucks', component: TruckComponent},
-  {path: 'orders', component: OrderComponent}
+  {path: 'orders', component: OrderComponent},
+  {path: 'suppliers', component: SupplierComponent}
 ];
 
 @NgModule({

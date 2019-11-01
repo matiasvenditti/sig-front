@@ -1,0 +1,18 @@
+<nb-card status="primary">
+  <nb-card-header>Crear Proveedor</nb-card-header>
+  <nb-card-body>
+
+      <form class="form" [formGroup]="supplierForm">
+          <input class="input" fullWidth nbInput type="text" placeholder="Nombre" formControlName="name">
+          <input class="input" fullWidth nbInput type="text" placeholder="CUIT" formControlName="cuit">
+          <input class="input" fullWidth nbInput type="text" placeholder="Razón Social" formControlName="businessName">
+      </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!supplierForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

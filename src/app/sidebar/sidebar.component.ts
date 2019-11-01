@@ -43,6 +43,11 @@ export class SidebarComponent implements OnInit {
           title: 'Ordenes de Compra',
           link: 'orders',
           icon: 'file-add'
+        },
+        {
+          title: 'Proveedores',
+          link: 'suppliers',
+          icon: 'shopping-cart'
         }
       ],
     },

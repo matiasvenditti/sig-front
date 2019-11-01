@@ -50,6 +50,10 @@ import { OrderComponent } from './order/order.component';
 import { CreateOrderComponent } from './order/create-order/create-order.component';
 import { UpdateOrderComponent } from './order/update-order/update-order.component';
 import { DeleteOrderComponent } from './order/delete-order/delete-order.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { CreateSupplierComponent } from './supplier/create-supplier/create-supplier.component';
+import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
+import { DeleteSupplierComponent } from './supplier/delete-supplier/delete-supplier.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +83,11 @@ import { DeleteOrderComponent } from './order/delete-order/delete-order.componen
     OrderComponent,
     CreateOrderComponent,
     UpdateOrderComponent,
-    DeleteOrderComponent
+    DeleteOrderComponent,
+    SupplierComponent,
+    CreateSupplierComponent,
+    UpdateSupplierComponent,
+    DeleteSupplierComponent
   ],
   imports: [
     HttpClientModule,
@@ -95,7 +103,7 @@ import { DeleteOrderComponent } from './order/delete-order/delete-order.componen
     NbIconModule,
     NbDialogModule.forRoot(),
     ReactiveFormsModule,
-    NbThemeModule.forRoot({name: 'dark'}),
+    NbThemeModule.forRoot({name: 'default'}),
     NbSidebarModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbToastrModule.forRoot(),
@@ -124,7 +132,10 @@ import { DeleteOrderComponent } from './order/delete-order/delete-order.componen
     UpdateTruckComponent,
     CreateOrderComponent,
     DeleteOrderComponent,
-    UpdateOrderComponent
+    UpdateOrderComponent,
+    CreateSupplierComponent,
+    DeleteSupplierComponent,
+    UpdateSupplierComponent
   ]
 })
 export class AppModule { }
