@@ -17,7 +17,7 @@
             <div class="input-error" *ngIf="get('price').errors.min">El campo <strong>Precio</strong> tiene un valor minimo de 0</div>
           </div>
 
-          <input [status]="get('createdDate').invalid && (get('craetedDate').dirty || get('createdDate').touched) ? 'danger' : 'primary'" class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
+          <input [status]="get('createdDate').invalid && (get('createdDate').dirty || get('createdDate').touched) ? 'danger' : 'primary'" class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
           <nb-datepicker [min]="min" #datepicker></nb-datepicker>
 
           <div *ngIf="get('createdDate').invalid && (get('createdDate').dirty || get('createdDate').touched)" class="error-container">
