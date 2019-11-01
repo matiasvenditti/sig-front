@@ -4,7 +4,7 @@
 
       <form class="form" [formGroup]="orderForm">
           <input [status]="get('amount').invalid && (get('amount').dirty || get('amount').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
-          
+
           <div *ngIf="get('amount').invalid && (get('amount').dirty || get('amount').touched)" class="error-container">
             <div class="input-error" *ngIf="get('amount').errors.required">El campo <strong>Cantidad</strong> es requerido</div>
             <div class="input-error" *ngIf="get('amount').errors.min">El campo <strong>Cantidad</strong> tiene un valor minimo de 0</div>
@@ -23,13 +23,21 @@
           <div *ngIf="get('createdDate').invalid && (get('createdDate').dirty || get('createdDate').touched)" class="error-container">
             <div class="input-error" *ngIf="get('createdDate').errors.required">El campo <strong>Fecha de Emisión</strong> es requerido</div>
           </div>
-        
+
           <nb-select [status]="get('product').invalid && (get('product').dirty || get('product').touched) ? 'danger' : 'primary'" formControlName="product" class="input" fullWidth placeholder="Producto">
             <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
           </nb-select>
 
           <div *ngIf="get('product').invalid && (get('product').dirty || get('product').touched)" class="error-container">
             <div class="input-error" *ngIf="get('product').errors.required">El campo <strong>Producto</strong> es requerido</div>
+          </div>
+
+          <nb-select [status]="get('supplier').invalid && (get('supplier').dirty || get('supplier').touched) ? 'danger' : 'primary'" formControlName="supplier" class="input" fullWidth placeholder="Proveedor">
+            <nb-option *ngFor="let supplier of suppliers" [value]="supplier">{{supplier.name}}</nb-option>
+          </nb-select>
+
+          <div *ngIf="get('supplier').invalid && (get('supplier').dirty || get('supplier').touched)" class="error-container">
+            <div class="input-error" *ngIf="get('supplier').errors.required">El campo <strong>Proveedor</strong> es requerido</div>
           </div>
       </form>
 
