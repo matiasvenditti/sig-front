@@ -1,11 +1,12 @@
 <nb-stepper orientation="horizontal" [linear]=true>
     
   <nb-step [stepControl]="form">
-    <form [formGroup]="form">
+    <!-- <form [formGroup]="form">
       <input nbInput fullWidth [status]="!form.get('name').valid && form.get('name').touched ? 'danger' : 'primary'"  formControlName="name" type="text" placeholder="Insert Name">
       <input nbInput fullWidth [status]="!form.get('surname').valid && form.get('surname').touched ? 'danger' : 'primary'" formControlName="surname" type="text" placeholder="Insert Surname">
       <button type="button" nbButton nbStepperNext>next</button>
-    </form>
+    </form> -->
+    <app-reception></app-reception>
   </nb-step>
 
   <nb-step [label]="labelTwo">

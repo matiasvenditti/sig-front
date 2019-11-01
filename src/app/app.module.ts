@@ -17,6 +17,7 @@ import {
   NbDialogModule,
   NbCheckboxModule,
   NbDatepickerModule,
+  NbBadgeModule,
   NbTreeGridModule,
   NbToastrModule,
   NbMenuModule
@@ -54,6 +55,7 @@ import { SupplierComponent } from './supplier/supplier.component';
 import { CreateSupplierComponent } from './supplier/create-supplier/create-supplier.component';
 import { UpdateSupplierComponent } from './supplier/update-supplier/update-supplier.component';
 import { DeleteSupplierComponent } from './supplier/delete-supplier/delete-supplier.component';
+import { ReceptionComponent } from './reception/reception.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ import { DeleteSupplierComponent } from './supplier/delete-supplier/delete-suppl
     SupplierComponent,
     CreateSupplierComponent,
     UpdateSupplierComponent,
-    DeleteSupplierComponent
+    DeleteSupplierComponent,
+    ReceptionComponent
   ],
   imports: [
     HttpClientModule,
@@ -108,6 +111,7 @@ import { DeleteSupplierComponent } from './supplier/delete-supplier/delete-suppl
     NbDatepickerModule.forRoot(),
     NbToastrModule.forRoot(),
     NbTreeGridModule,
+    NbBadgeModule,
     NbLayoutModule,
     NbCheckboxModule,
     NbMenuModule.forRoot(),

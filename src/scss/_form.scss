@@ -9,6 +9,29 @@
         color: #FF3D71;
         margin-bottom: 20px;
     }
+
+    .badge-container {
+        display: flex;
+    }
+
+    .margin-bottom {
+        margin-bottom: 20px;
+    }
+
+    nb-badge {
+        position: relative;
+        margin-right: 10px;
+    }
+
+    nb-badge:hover {
+        cursor: pointer;
+    }
+
+    .sub-form{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    }
 }
 
 .margin-right {

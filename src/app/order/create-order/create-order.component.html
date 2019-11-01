@@ -24,9 +24,25 @@
             <div class="input-error" *ngIf="get('createdDate').errors.required">El campo <strong>Fecha de Emisión</strong> es requerido</div>
           </div>
 
-          <nb-select [status]="get('product').invalid && (get('product').dirty || get('product').touched) ? 'danger' : 'primary'" formControlName="product" class="input" fullWidth placeholder="Producto">
-            <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
-          </nb-select>
+          <form class="sub-form" [formGroup]="productForm">  
+                <nb-layout-column>
+                    <nb-select formControlName="product" class="input" placeholder="Producto">
+                      <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
+                    </nb-select>
+                </nb-layout-column>
+
+                <nb-layout-column>
+                    <input class="input" type="number" nbInput placeholder="Cantidad" formControlName="amount">
+                </nb-layout-column>
+
+                <nb-layout-column left class="colored-column-success">
+                    <button (click)="addToList()" nbButton [disabled]="!productForm.valid"><nb-icon icon="plus-outline"></nb-icon></button>
+                </nb-layout-column>
+          </form>
+
+          <div [ngClass]="{'margin-bottom': createProducts.length > 0}" class="badge-container">
+            <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of createProducts" text="{{productItem.product.name}} (x{{productItem.amount}})" status="primary"></nb-badge>
+          </div>
 
           <div *ngIf="get('product').invalid && (get('product').dirty || get('product').touched)" class="error-container">
             <div class="input-error" *ngIf="get('product').errors.required">El campo <strong>Producto</strong> es requerido</div>

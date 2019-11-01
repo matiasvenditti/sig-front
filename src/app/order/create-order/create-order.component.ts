@@ -7,6 +7,7 @@ import { ProductDTO } from 'src/app/dto/procuct-dto';
 import { OrderService } from 'src/app/services/order/order.service';
 import {SupplierService} from '../../services/supplier/supplier.service';
 import {SupplierDTO} from '../../dto/suppliet-dto';
+import { ProductItemDTO } from 'src/app/dto/product-item-dto';
 
 @Component({
   selector: 'app-create-order',
@@ -19,6 +20,9 @@ export class CreateOrderComponent implements OnInit {
   private products: ProductDTO[] = [];
   private suppliers: SupplierDTO[] = [];
   private min: Date;
+  private createProducts: ProductItemDTO[] = [];
+
+  private productForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private productService: ProductService,
@@ -36,6 +40,11 @@ export class CreateOrderComponent implements OnInit {
       product: [null, Validators.required],
       createdDate: [null, Validators.required],
       supplier: [null, Validators.required]
+    });
+
+    this.productForm = this.fb.group({
+      product: [null, Validators.required],
+      amount: [null, [Validators.required, Validators.min(0)]]
     });
 
     this.getProducts();
@@ -70,6 +79,20 @@ export class CreateOrderComponent implements OnInit {
 
   get(name: string) {
     return this.orderForm.get(name);
+  }
+
+  addToList() {
+    const index = this.createProducts.findIndex((productItem: ProductItemDTO) => productItem.product.id === this.productForm.value.product.id);
+    if (index === -1) {
+      this.createProducts.push(this.productForm.value)
+    } else {
+      this.createProducts[index].amount = this.productForm.value.amount;
+    }
+    this.productForm.reset()
+  }
+
+  removeProductItem(productItem: ProductItemDTO) {
+    this.createProducts = this.createProducts.filter((item: ProductItemDTO) => item.product.name !== productItem.product.name);
   }
 
 }
