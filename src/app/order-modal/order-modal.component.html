@@ -1,0 +1,47 @@
+<nb-card status="primary">
+    <nb-card-header>Ingresar Camión</nb-card-header>
+    <nb-card-body>
+      <table class="card-width" [nbTreeGrid]="productDataSource">
+        <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allProductColumns"></tr>
+        <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allProductColumns"></tr>
+      
+        <ng-container nbTreeGridColumnDef="product">
+          <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
+        </ng-container>
+      
+        <ng-container nbTreeGridColumnDef="amount">
+          <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['amount']}}</td>
+        </ng-container>
+      </table>
+    </nb-card-body>
+
+    <table class="card-width" [nbTreeGrid]="supplierDataSource">
+        <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allSupplierColumns"></tr>
+        <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allSupplierColumns"></tr>
+      
+        <ng-container nbTreeGridColumnDef="name">
+          <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Nombre</th>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['name']}}</td>
+        </ng-container>
+      
+        <ng-container nbTreeGridColumnDef="cuit">
+          <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>CUIT</th>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['cuit']}}</td>
+        </ng-container>
+      
+        <ng-container nbTreeGridColumnDef="businessName">
+          <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Razón Social</th>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['businessName']}}</td>
+        </ng-container>
+      </table>
+<nb-card-footer>
+  <div class="button-container">
+    <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+    <button (click)="submit()" status="success" nbButton >Ingresar</button>
+  </div>
+</nb-card-footer>
+</nb-card>
+
+  

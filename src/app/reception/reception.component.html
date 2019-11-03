@@ -1,3 +1,44 @@
-<p>
-  reception works!
-</p>
+<div class="section-header">
+  <h2>Recepción</h2>
+</div>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource">
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="createdDate">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha Creación</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="supplier">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Proveedor</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['supplier'].name}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="verified">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>En Planta</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+      <nb-icon *ngIf="row.data['verified']" status="success" icon="checkmark-outline"></nb-icon>
+      <nb-icon *ngIf="!row.data['verified']" status="danger" icon="close-outline"></nb-icon>
+    </td>
+  </ng-container>
+
+  <ng-container [nbTreeGridColumnDef]="customColumn">
+      <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+      <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+        <div class="action-container">
+            <button *ngIf="!row.data['verified']" nbButton (click)="open(row.data)"><nb-icon icon="log-in-outline"></nb-icon></button>
+            <span *ngIf="row.data['verified']" status="primary">Orden en planta</span>
+        </div>
+      </td>
+  </ng-container>
+
+</table>
