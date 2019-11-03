@@ -19,20 +19,20 @@
     <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
   </ng-container>
 
-  <ng-container nbTreeGridColumnDef="amount">
+  <!-- <ng-container nbTreeGridColumnDef="amount">
     <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
     <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['amount']}}</td>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container nbTreeGridColumnDef="price">
     <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Precio</th>
     <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['price']}}</td>
   </ng-container>
 
-  <ng-container nbTreeGridColumnDef="product">
+  <!-- <ng-container nbTreeGridColumnDef="product">
     <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
     <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container [nbTreeGridColumnDef]="customColumn">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>

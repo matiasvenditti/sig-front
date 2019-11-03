@@ -19,7 +19,7 @@ export class OrderComponent implements OnInit {
   private data: TreeNode<OrderDTO>[];
 
   customColumn = 'action';
-  defaultColumns = ['id', 'createdDate', 'amount', 'price', 'product'];
+  defaultColumns = ['id', 'createdDate', 'price'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<OrderDTO>;
 

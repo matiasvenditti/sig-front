@@ -35,9 +35,7 @@ export class CreateOrderComponent implements OnInit {
     this.min = new Date();
 
     this.orderForm = this.fb.group({
-      amount: [null, [Validators.required, Validators.min(0)]],
       price: [null, [Validators.required, Validators.min(0)]],
-      product: [null, Validators.required],
       createdDate: [null, Validators.required],
       supplier: [null, Validators.required]
     });

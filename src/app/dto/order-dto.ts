@@ -5,9 +5,8 @@ import { ProductItemDTO } from './product-item-dto';
 export interface OrderDTO {
     id: number,
     createdDate: Date,
-    amount: number,
     price: number,
-    product: ProductItemDTO[],
+    products: ProductItemDTO[],
     verified: boolean,
     supplier: SupplierDTO
 }

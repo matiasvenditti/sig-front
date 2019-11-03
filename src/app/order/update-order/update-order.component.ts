@@ -6,6 +6,7 @@ import { ToasterService } from 'src/app/services/toaster.service';
 import { ProductDTO } from 'src/app/dto/procuct-dto';
 import { OrderService } from 'src/app/services/order/order.service';
 import { OrderDTO } from 'src/app/dto/order-dto';
+import { ProductItemDTO } from 'src/app/dto/product-item-dto';
 
 @Component({
   selector: 'app-update-order',
@@ -19,6 +20,8 @@ export class UpdateOrderComponent implements OnInit {
   private min: Date;
   private order: OrderDTO;
 
+  private productForm: FormGroup;
+
   constructor(private fb: FormBuilder,
     private productService: ProductService,
     private dialogRef: NbDialogRef<UpdateOrderComponent>,
@@ -29,15 +32,21 @@ export class UpdateOrderComponent implements OnInit {
     this.min = new Date();
     
     this.orderForm = this.fb.group({
-      amount: [this.order.amount, [Validators.required, Validators.min(0)]],
       price: [this.order.price, [Validators.required, Validators.min(0)]],
-      product: [this.order.product, Validators.required],
+      product: [this.order.products, Validators.required],
       createdDate: [null, Validators.required]
+    });
+
+    this.productForm = this.fb.group({
+      product: [null, Validators.required],
+      amount: [null, [Validators.required, Validators.min(0)]]
     });
 
     this.productService.getAll().subscribe(res => {
       this.products = res;
     })
+
+    console.log(this.order);
   }
 
   submit() {
@@ -52,6 +61,20 @@ export class UpdateOrderComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  addToList() {
+    const index = this.order.products.findIndex((productItem: ProductItemDTO) => productItem.product.id === this.productForm.value.product.id);
+    if (index === -1) {
+      this.order.products.push(this.productForm.value)
+    } else {
+      this.order.products[index].amount = this.productForm.value.amount;
+    }
+    this.productForm.reset()
+  }
+
+  removeProductItem(productItem: ProductItemDTO) {
+    this.order.products = this.order.products.filter((item: ProductItemDTO) => item.product.name !== productItem.product.name);
   }
 
 }

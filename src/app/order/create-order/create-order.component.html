@@ -3,13 +3,6 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="orderForm">
-          <input [status]="get('amount').invalid && (get('amount').dirty || get('amount').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Cantidad" formControlName="amount">
-
-          <div *ngIf="get('amount').invalid && (get('amount').dirty || get('amount').touched)" class="error-container">
-            <div class="input-error" *ngIf="get('amount').errors.required">El campo <strong>Cantidad</strong> es requerido</div>
-            <div class="input-error" *ngIf="get('amount').errors.min">El campo <strong>Cantidad</strong> tiene un valor minimo de 0</div>
-          </div>
-
           <input [status]="get('price').invalid && (get('price').dirty || get('price').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
 
           <div *ngIf="get('price').invalid && (get('price').dirty || get('price').touched)" class="error-container">
@@ -42,10 +35,6 @@
 
           <div [ngClass]="{'margin-bottom': createProducts.length > 0}" class="badge-container">
             <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of createProducts" text="{{productItem.product.name}} (x{{productItem.amount}})" status="primary"></nb-badge>
-          </div>
-
-          <div *ngIf="get('product').invalid && (get('product').dirty || get('product').touched)" class="error-container">
-            <div class="input-error" *ngIf="get('product').errors.required">El campo <strong>Producto</strong> es requerido</div>
           </div>
 
           <nb-select [status]="get('supplier').invalid && (get('supplier').dirty || get('supplier').touched) ? 'danger' : 'primary'" formControlName="supplier" class="input" fullWidth placeholder="Proveedor">
