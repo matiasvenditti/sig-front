@@ -7,7 +7,8 @@
 
 @import './scss/form';
 @import './scss/section';
-@import './scss//delete-form';
+@import './scss/delete-form';
+@import './scss/step';
 
 @include nb-install() {
   @include nb-theme-global();

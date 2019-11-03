@@ -1,31 +1,35 @@
-<nb-stepper orientation="horizontal" [linear]=true>
+<nb-stepper orientation="horizontal" [linear]=false>
     
-  <nb-step [stepControl]="form">
-    <!-- <form [formGroup]="form">
-      <input nbInput fullWidth [status]="!form.get('name').valid && form.get('name').touched ? 'danger' : 'primary'"  formControlName="name" type="text" placeholder="Insert Name">
-      <input nbInput fullWidth [status]="!form.get('surname').valid && form.get('surname').touched ? 'danger' : 'primary'" formControlName="surname" type="text" placeholder="Insert Surname">
-      <button type="button" nbButton nbStepperNext>next</button>
-    </form> -->
+  <nb-step>
     <app-reception></app-reception>
+    <div class="step-button-container">
+      <button type="button" nbButton nbStepperNext>siguiente</button>
+    </div>
   </nb-step>
 
   <nb-step [label]="labelTwo">
     <ng-template #labelTwo>Second step</ng-template>
     <h4>Step content #2</h4>
-    <button nbButton nbStepperPrevious>prev</button>
-    <button nbButton nbStepperNext>next</button>
+    <div class="step-button-container">
+      <button class="margin-right" nbButton nbStepperPrevious>anterior</button>
+      <button nbButton nbStepperNext>siguiente</button>
+    </div>
   </nb-step>
 
   <nb-step label="Third step">
     <h4>Step content #3</h4>
-    <button nbButton nbStepperPrevious>prev</button>
-    <button nbButton nbStepperNext>next</button>
+    <div class="step-button-container">
+      <button class="margin-right" nbButton nbStepperPrevious>anterior</button>
+      <button nbButton nbStepperNext>siguiente</button>
+    </div>
   </nb-step>
 
   <nb-step [label]="labelFour">
     <ng-template #labelFour>Fourth step</ng-template>
     <h4>Step content #4</h4>
-    <button nbButton nbStepperPrevious>prev</button>
-    <button nbButton disabled nbStepperNext>next</button>
+    <div class="step-button-container">
+      <button class="margin-right" nbButton nbStepperPrevious>anterior</button>
+      <button status="success" nbButton nbStepperNext>terminar</button>
+    </div>
   </nb-step>
 </nb-stepper>
