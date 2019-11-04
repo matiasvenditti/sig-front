@@ -4,7 +4,7 @@
   
         <form class="form" [formGroup]="orderForm">
             <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
-            <nb-datepicker [min]="min" #datepicker></nb-datepicker>
+            <nb-datepicker #datepicker></nb-datepicker>
   
             <form class="sub-form" [formGroup]="productForm">  
                   <nb-layout-column>

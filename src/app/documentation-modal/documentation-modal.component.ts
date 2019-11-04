@@ -21,7 +21,7 @@ export class DocumentationModalComponent implements OnInit {
   private orderForm: FormGroup;
   private products: ProductDTO[] = [];
   private suppliers: SupplierDTO[] = [];
-  private min: Date;
+  // private min: Date;
   private createProducts: ProductItemDTO[] = [];
 
   private productForm: FormGroup;
@@ -36,7 +36,7 @@ export class DocumentationModalComponent implements OnInit {
               private toasterService: ToasterService) {}
 
   ngOnInit() {
-    this.min = new Date();
+    // this.min = new Date();
 
     this.orderForm = this.fb.group({
       createdDate: [null, Validators.required],
