@@ -7,7 +7,6 @@ export interface OrderDTO {
     createdDate: Date,
     price: number,
     items: ProductItemDTO[],
-    verified: boolean,
     supplier: SupplierDTO,
-    validDocumentation: boolean
+    state: string
 }

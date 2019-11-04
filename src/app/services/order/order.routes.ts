@@ -5,7 +5,7 @@ export const OrderApi = {
     get: {
         findAll: () => `${apiUrl}`,
         findOne: (id: number) => `${apiUrl}/${id}`,
-        findAllVerified: () => `${apiUrl}/verified`
+        findAllPlant: () => `${apiUrl}/plant`
     },
     post: {
         create: () => `${apiUrl}`,

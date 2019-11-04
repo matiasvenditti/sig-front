@@ -4,6 +4,8 @@ import { OrderDTO } from '../dto/order-dto';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
 import { TreeNode } from '../dto/tree-node';
 import { OrderModalComponent } from '../order-modal/order-modal.component';
+import { OrderState } from '../model/order-state';
+import { StateManagerService } from '../services/state-manager.service';
 
 @Component({
   selector: 'app-reception',
@@ -16,12 +18,14 @@ export class ReceptionComponent implements OnInit {
   private orderData: OrderDTO[] = [];
 
   customColumn = 'ingresar';
-  defaultColumns = ['id', 'createdDate', 'supplier', 'verified'];
+  defaultColumns = ['id', 'createdDate', 'supplier', 'state'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<OrderDTO>;
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<OrderDTO>,
-    private orderService: OrderService, private dialogService: NbDialogService) { }
+    private orderService: OrderService,
+    private dialogService: NbDialogService,
+    private stateManagerService: StateManagerService) { }
 
   ngOnInit() {
     this.orderService.getAll().subscribe(res => {
@@ -32,7 +36,7 @@ export class ReceptionComponent implements OnInit {
   }
 
   enter(order: OrderDTO) {
-    order.verified = true;
+    order.state = OrderState.PLANT;
     this.orderService.update(order.id, order).subscribe((res: OrderDTO) => {
       const index = this.orderData.findIndex(find => find.id === order.id);
       if (index !== -1) {
@@ -59,4 +63,7 @@ export class ReceptionComponent implements OnInit {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
+  inFirstStep(state: string) {
+    return this.stateManagerService.inFirstStep(state);
+  }
 }

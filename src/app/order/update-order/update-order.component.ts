@@ -34,7 +34,6 @@ export class UpdateOrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       price: [this.order.price, [Validators.required, Validators.min(0)]],
       product: [this.order.items, Validators.required],
-      createdDate: [null, Validators.required]
     });
 
     this.productForm = this.fb.group({
@@ -45,8 +44,6 @@ export class UpdateOrderComponent implements OnInit {
     this.productService.getAll().subscribe(res => {
       this.products = res;
     })
-
-    console.log(this.order);
   }
 
   submit() {

@@ -5,9 +5,6 @@
       <form class="form" [formGroup]="orderForm">
           <input min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
 
-          <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
-          <nb-datepicker [min]="min" #datepicker></nb-datepicker>
-
           <form class="sub-form" [formGroup]="productForm">  
             <nb-layout-column>
                 <nb-select formControlName="product" class="input" placeholder="Producto">
@@ -24,7 +21,7 @@
             </nb-layout-column>
           </form>
 
-          <div [ngClass]="{'margin-bottom': order.product.length > 0}" class="badge-container">
+          <div [ngClass]="{'margin-bottom': order.items.length > 0}" class="badge-container">
             <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of order.product" text="{{productItem.product.name}} (x{{productItem.quantity}})" status="primary"></nb-badge>
           </div>
 

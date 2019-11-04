@@ -15,8 +15,8 @@ export class OrderService {
     return this.http.get<OrderDTO[]>(OrderApi.get.findAll());
   }
 
-  getAllVerified() {
-    return this.http.get<OrderDTO[]>(OrderApi.get.findAllVerified());
+  getAllPlant() {
+    return this.http.get<OrderDTO[]>(OrderApi.get.findAllPlant());
   }
 
   create(order: OrderDTO) {

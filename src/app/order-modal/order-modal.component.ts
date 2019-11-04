@@ -6,6 +6,7 @@ import { ProductItemDTO } from '../dto/product-item-dto';
 import { OrderService } from '../services/order/order.service';
 import { SupplierDTO } from '../dto/suppliet-dto';
 import { ToasterService } from '../services/toaster.service';
+import { OrderState } from '../model/order-state';
 
 @Component({
   selector: 'app-order-modal',
@@ -48,7 +49,7 @@ export class OrderModalComponent implements OnInit {
   }
 
   submit() {
-    this.order.verified = true;
+    this.order.state = OrderState.PLANT;
     this.orderService.update(this.order.id, this.order).subscribe(res => {
       this.toasterService.showSuccess('El camión ingresó a la planta','Operación Exitosa');
       this.dialogRef.close(res);

@@ -4,6 +4,8 @@ import { OrderDTO } from '../dto/order-dto';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
 import { OrderService } from '../services/order/order.service';
 import { DocumentationModalComponent } from '../documentation-modal/documentation-modal.component';
+import { OrderState } from '../model/order-state';
+import { StateManagerService } from '../services/state-manager.service';
 
 @Component({
   selector: 'app-documentation',
@@ -16,15 +18,17 @@ export class DocumentationComponent implements OnInit {
   private orderData: OrderDTO[] = [];
 
   customColumn = 'validar';
-  defaultColumns = ['id', 'createdDate', 'supplier', 'verified', 'documentation'];
+  defaultColumns = ['id', 'createdDate', 'supplier', 'state'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<OrderDTO>;
 
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<OrderDTO>,
-    private orderService: OrderService, private dialogService: NbDialogService) { }
+    private orderService: OrderService,
+    private dialogService: NbDialogService,
+    private stateManagerService: StateManagerService) { }
 
   ngOnInit() {
-    this.orderService.getAllVerified().subscribe(res => {
+    this.orderService.getAllPlant().subscribe(res => {
       this.orderData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
@@ -32,7 +36,7 @@ export class DocumentationComponent implements OnInit {
   }
 
   enter(order: OrderDTO) {
-    order.verified = true;
+    order.state = OrderState.QUALITY;
     this.orderService.update(order.id, order).subscribe((res: OrderDTO) => {
       const index = this.orderData.findIndex(find => find.id === order.id);
       if (index !== -1) {
@@ -59,4 +63,7 @@ export class DocumentationComponent implements OnInit {
     this.dataSource = this.dataSourceBuilder.create(this.data);
   }
 
+  inSecondStep(state: string) {
+    return this.stateManagerService.inSecondStep(state);
+  }
 }
