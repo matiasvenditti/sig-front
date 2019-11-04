@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../services/order/order.service';
+import { TreeNode } from '../dto/tree-node';
 import { OrderDTO } from '../dto/order-dto';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
-import { TreeNode } from '../dto/tree-node';
-import { OrderModalComponent } from '../order-modal/order-modal.component';
+import { OrderService } from '../services/order/order.service';
+import { DocumentationModalComponent } from '../documentation-modal/documentation-modal.component';
 
 @Component({
-  selector: 'app-reception',
-  templateUrl: './reception.component.html',
-  styleUrls: ['./reception.component.sass']
+  selector: 'app-documentation',
+  templateUrl: './documentation.component.html',
+  styleUrls: ['./documentation.component.sass']
 })
-export class ReceptionComponent implements OnInit {
+export class DocumentationComponent implements OnInit {
 
   private data: TreeNode<OrderDTO>[];
   private orderData: OrderDTO[] = [];
 
-  customColumn = 'ingresar';
-  defaultColumns = ['id', 'createdDate', 'supplier', 'verified'];
+  customColumn = 'validar';
+  defaultColumns = ['id', 'createdDate', 'supplier', 'verified', 'documentation'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<OrderDTO>;
 
@@ -24,7 +24,7 @@ export class ReceptionComponent implements OnInit {
     private orderService: OrderService, private dialogService: NbDialogService) { }
 
   ngOnInit() {
-    this.orderService.getAll().subscribe(res => {
+    this.orderService.getAllVerified().subscribe(res => {
       this.orderData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
@@ -43,7 +43,7 @@ export class ReceptionComponent implements OnInit {
   }
 
   open(order: OrderDTO) {
-    this.dialogService.open(OrderModalComponent, {context: {order: order} as Partial<any>}).onClose.subscribe((order: OrderDTO) => {
+    this.dialogService.open(DocumentationModalComponent, {context: {order: order} as Partial<any>}).onClose.subscribe((order: OrderDTO) => {
       if(order) {
         const index = this.orderData.findIndex(find => find.id === order.id);
         if (index !== -1) {

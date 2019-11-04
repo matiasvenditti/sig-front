@@ -4,10 +4,12 @@ const apiUrl = `${environment.apiUrl}/orders`;
 export const OrderApi = {
     get: {
         findAll: () => `${apiUrl}`,
-        findOne: (id: number) => `${apiUrl}/${id}`
+        findOne: (id: number) => `${apiUrl}/${id}`,
+        findAllVerified: () => `${apiUrl}/verified`
     },
     post: {
-        create: () => `${apiUrl}`
+        create: () => `${apiUrl}`,
+        validateDocumentation: (id: number) => `${apiUrl}/${id}/validate`
     },
     put: {
         update: (id: number) => `${apiUrl}/${id}`

@@ -34,6 +34,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderService.getAll().subscribe(response => {
+      console.log(response);
       this.orderData = response;
       this.data = response.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);

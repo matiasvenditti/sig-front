@@ -1,40 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProductService } from 'src/app/services/product/product.service';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { RemitoDTO } from '../dto/remito-dto';
+import { OrderDTO } from '../dto/order-dto';
+import { ProductItemDTO } from '../dto/product-item-dto';
+import { ProductService } from '../services/product/product.service';
+import { SupplierService } from '../services/supplier/supplier.service';
+import { OrderService } from '../services/order/order.service';
 import { NbDialogRef } from '@nebular/theme';
-import { ToasterService } from 'src/app/services/toaster.service';
-import { ProductDTO } from 'src/app/dto/procuct-dto';
-import { OrderService } from 'src/app/services/order/order.service';
-import {SupplierService} from '../../services/supplier/supplier.service';
-import {SupplierDTO} from '../../dto/suppliet-dto';
-import { ProductItemDTO } from 'src/app/dto/product-item-dto';
-import { OrderDTO } from 'src/app/dto/order-dto';
+import { ToasterService } from '../services/toaster.service';
+import { ProductDTO } from '../dto/procuct-dto';
+import { SupplierDTO } from '../dto/suppliet-dto';
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.sass']
+  selector: 'app-documentation-modal',
+  templateUrl: './documentation-modal.component.html',
+  styleUrls: ['./documentation-modal.component.sass']
 })
-export class CreateOrderComponent implements OnInit {
+export class DocumentationModalComponent implements OnInit {
 
   private orderForm: FormGroup;
   private products: ProductDTO[] = [];
   private suppliers: SupplierDTO[] = [];
+  private min: Date;
   private createProducts: ProductItemDTO[] = [];
 
   private productForm: FormGroup;
+
+  private order: OrderDTO;
 
   constructor(private fb: FormBuilder,
               private productService: ProductService,
               private supplierServie: SupplierService,
               private orderService: OrderService,
-              private dialogRef: NbDialogRef<CreateOrderComponent>,
+              private dialogRef: NbDialogRef<DocumentationModalComponent>,
               private toasterService: ToasterService) {}
 
   ngOnInit() {
+    this.min = new Date();
 
     this.orderForm = this.fb.group({
-      price: [null, [Validators.required, Validators.min(0)]],
+      createdDate: [null, Validators.required],
       supplier: [null, Validators.required]
     });
 
@@ -48,12 +53,13 @@ export class CreateOrderComponent implements OnInit {
   }
 
   submit() {
-    const order: OrderDTO = {...this.orderForm.value, items: this.createProducts};
-    this.orderService.create(order).subscribe(res => {
-      this.toasterService.showSuccess('Orden generada exitosamente', 'Operación Exitosa');
+    const remito: RemitoDTO = {...this.orderForm.value, items: this.createProducts};
+    console.log(remito);
+    this.orderService.validateDocumentation(this.order.id, remito).subscribe(res => {
+      this.toasterService.showSuccess('Documentación validada exitosamente', 'Operación Exitosa');
       this.dialogRef.close(res);
     }, () => {
-      this.toasterService.showError('No se pudo generar la orden correctamente', 'Error');
+      this.toasterService.showError('No se pudo validar la documentación para la orden', 'Error');
       this.close();
     });
   }
@@ -72,10 +78,6 @@ export class CreateOrderComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
-  }
-
-  get(name: string) {
-    return this.orderForm.get(name);
   }
 
   addToList() {

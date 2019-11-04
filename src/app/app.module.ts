@@ -57,6 +57,8 @@ import { UpdateSupplierComponent } from './supplier/update-supplier/update-suppl
 import { DeleteSupplierComponent } from './supplier/delete-supplier/delete-supplier.component';
 import { ReceptionComponent } from './reception/reception.component';
 import { OrderModalComponent } from './order-modal/order-modal.component';
+import { DocumentationComponent } from './documentation/documentation.component';
+import { DocumentationModalComponent } from './documentation-modal/documentation-modal.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { OrderModalComponent } from './order-modal/order-modal.component';
     UpdateSupplierComponent,
     DeleteSupplierComponent,
     ReceptionComponent,
-    OrderModalComponent
+    OrderModalComponent,
+    DocumentationComponent,
+    DocumentationModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -142,7 +146,8 @@ import { OrderModalComponent } from './order-modal/order-modal.component';
     CreateSupplierComponent,
     DeleteSupplierComponent,
     UpdateSupplierComponent,
-    OrderModalComponent
+    OrderModalComponent,
+    DocumentationModalComponent
   ]
 })
 export class AppModule { }

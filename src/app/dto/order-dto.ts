@@ -8,5 +8,6 @@ export interface OrderDTO {
     price: number,
     items: ProductItemDTO[],
     verified: boolean,
-    supplier: SupplierDTO
+    supplier: SupplierDTO,
+    validDocumentation: boolean
 }
