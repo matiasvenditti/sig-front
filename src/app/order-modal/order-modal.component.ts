@@ -22,7 +22,7 @@ export class OrderModalComponent implements OnInit {
 
   private order: OrderDTO;
 
-  defaultColumns = ['product', 'amount'];
+  defaultColumns = ['product', 'quantity'];
   allProductColumns = [...this.defaultColumns];
   productDataSource: NbTreeGridDataSource<ProductItemDTO>;
 
@@ -38,8 +38,8 @@ export class OrderModalComponent implements OnInit {
     private dialogRef: NbDialogRef<OrderModalComponent>,) { }
 
   ngOnInit() {
-    this.productItemData = this.order.products;
-    this.data = this.order.products.map(elem => {return {data: elem}});
+    this.productItemData = this.order.items;
+    this.data = this.order.items.map(elem => {return {data: elem}});
     this.productDataSource = this.dataSourceBuilder.create(this.data);
 
     this.supplierData = [this.order.supplier];

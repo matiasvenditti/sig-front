@@ -6,7 +6,7 @@ export interface OrderDTO {
     id: number,
     createdDate: Date,
     price: number,
-    products: ProductItemDTO[],
+    items: ProductItemDTO[],
     verified: boolean,
     supplier: SupplierDTO
 }

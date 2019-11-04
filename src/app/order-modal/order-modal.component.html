@@ -10,9 +10,9 @@
           <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
         </ng-container>
       
-        <ng-container nbTreeGridColumnDef="amount">
+        <ng-container nbTreeGridColumnDef="quantity">
           <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
-          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['amount']}}</td>
+          <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['quantity']}}</td>
         </ng-container>
       </table>
     </nb-card-body>

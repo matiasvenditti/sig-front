@@ -8,6 +8,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 import {SupplierService} from '../../services/supplier/supplier.service';
 import {SupplierDTO} from '../../dto/suppliet-dto';
 import { ProductItemDTO } from 'src/app/dto/product-item-dto';
+import { OrderDTO } from 'src/app/dto/order-dto';
 
 @Component({
   selector: 'app-create-order',
@@ -42,7 +43,7 @@ export class CreateOrderComponent implements OnInit {
 
     this.productForm = this.fb.group({
       product: [null, Validators.required],
-      amount: [null, [Validators.required, Validators.min(0)]]
+      quantity: [null, [Validators.required, Validators.min(0)]]
     });
 
     this.getProducts();
@@ -50,7 +51,8 @@ export class CreateOrderComponent implements OnInit {
   }
 
   submit() {
-    this.orderService.create(this.orderForm.value).subscribe(res => {
+    const order: OrderDTO = {...this.orderForm.value, items: this.createProducts};
+    this.orderService.create(order).subscribe(res => {
       this.toasterService.showSuccess('Orden generada exitosamente', 'Operación Exitosa');
       this.dialogRef.close(res);
     }, () => {
@@ -84,7 +86,7 @@ export class CreateOrderComponent implements OnInit {
     if (index === -1) {
       this.createProducts.push(this.productForm.value)
     } else {
-      this.createProducts[index].amount = this.productForm.value.amount;
+      this.createProducts[index].quantity = this.productForm.value.quantity;
     }
     this.productForm.reset()
   }

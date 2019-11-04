@@ -33,13 +33,13 @@ export class UpdateOrderComponent implements OnInit {
     
     this.orderForm = this.fb.group({
       price: [this.order.price, [Validators.required, Validators.min(0)]],
-      product: [this.order.products, Validators.required],
+      product: [this.order.items, Validators.required],
       createdDate: [null, Validators.required]
     });
 
     this.productForm = this.fb.group({
       product: [null, Validators.required],
-      amount: [null, [Validators.required, Validators.min(0)]]
+      quantity: [null, [Validators.required, Validators.min(0)]]
     });
 
     this.productService.getAll().subscribe(res => {
@@ -64,17 +64,17 @@ export class UpdateOrderComponent implements OnInit {
   }
 
   addToList() {
-    const index = this.order.products.findIndex((productItem: ProductItemDTO) => productItem.product.id === this.productForm.value.product.id);
+    const index = this.order.items.findIndex((productItem: ProductItemDTO) => productItem.product.id === this.productForm.value.product.id);
     if (index === -1) {
-      this.order.products.push(this.productForm.value)
+      this.order.items.push(this.productForm.value)
     } else {
-      this.order.products[index].amount = this.productForm.value.amount;
+      this.order.items[index].quantity = this.productForm.value.quantity;
     }
     this.productForm.reset()
   }
 
   removeProductItem(productItem: ProductItemDTO) {
-    this.order.products = this.order.products.filter((item: ProductItemDTO) => item.product.name !== productItem.product.name);
+    this.order.items = this.order.items.filter((item: ProductItemDTO) => item.product.name !== productItem.product.name);
   }
 
 }

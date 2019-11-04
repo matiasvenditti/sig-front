@@ -45,7 +45,8 @@ export class ReceptionComponent implements OnInit {
 
   open(order: OrderDTO) {
     //TODO: Descomentar esto cuando se haga el back
-    order.products = [{product: {id: 1, name: "Product 1", unit: "Tons"}, amount: 100}, {product: {id: 2, name: "Product 2", unit: "Liters"}, amount: 100}];
+    // order.items = [{product: {id: 1, name: "Product 1", unit: "Tons"}, amount: 100}, {product: {id: 2, name: "Product 2", unit: "Liters"}, amount: 100}];
+    console.log(order);
     this.dialogService.open(OrderModalComponent, {context: {order: order} as Partial<any>}).onClose.subscribe((order: OrderDTO) => {
       if(order) {
         const index = this.orderData.findIndex(find => find.id === order.id);

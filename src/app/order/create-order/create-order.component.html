@@ -25,7 +25,7 @@
                 </nb-layout-column>
 
                 <nb-layout-column>
-                    <input class="input" type="number" nbInput placeholder="Cantidad" formControlName="amount">
+                    <input class="input" type="number" nbInput placeholder="Cantidad" formControlName="quantity">
                 </nb-layout-column>
 
                 <nb-layout-column left class="colored-column-success">
@@ -34,7 +34,7 @@
           </form>
 
           <div [ngClass]="{'margin-bottom': createProducts.length > 0}" class="badge-container">
-            <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of createProducts" text="{{productItem.product.name}} (x{{productItem.amount}})" status="primary"></nb-badge>
+            <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of createProducts" text="{{productItem.product.name}} (x{{productItem.quantity}})" status="primary"></nb-badge>
           </div>
 
           <nb-select [status]="get('supplier').invalid && (get('supplier').dirty || get('supplier').touched) ? 'danger' : 'primary'" formControlName="supplier" class="input" fullWidth placeholder="Proveedor">
