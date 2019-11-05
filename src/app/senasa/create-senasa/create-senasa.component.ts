@@ -29,12 +29,9 @@ export class CreateSenasaComponent implements OnInit {
 
   ngOnInit() {
     this.senasaForm = this.fb.group({
-      denomination: ['', Validators.required],
       businessName: ['', Validators.required],
-      certification: [false, Validators.required],
+      reviewRequired: [false, Validators.required],
       country: ['', Validators.required],
-      expirationDate: [null, [Validators.required, greaterThanToday(new Date())]],
-      // componentes: ['', Validators.required],
       product: [null, Validators.required]
     });
 

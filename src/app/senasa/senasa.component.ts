@@ -18,7 +18,7 @@ export class SenasaComponent implements OnInit {
   private countries: string[];
 
   customColumn = 'action';
-  defaultColumns = ['id', 'denomination', 'businessName', 'country', 'certification', 'createdDate', 'expirationDate', 'product'];
+  defaultColumns = ['id', 'businessName', 'country', 'reviewRequired', 'createdDate', 'product'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<Senasa>;
 

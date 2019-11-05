@@ -1,11 +1,10 @@
 import { environment } from 'src/environments/environment.prod'
-const apiUrl = `${environment.apiUrl}/senasa`;
+const apiUrl = `${environment.apiUrl}/items`;
 
-export const SenasaApi = {
+export const OrderItemApi = {
     get: {
         findAll: () => `${apiUrl}`,
-        findOne: (id: number) => `${apiUrl}/${id}`,
-        findByProduct: (id: number) => `${apiUrl}/products?productId=${id}`
+        findValid: () => `${apiUrl}/valid`
     },
     post: {
         create: () => `${apiUrl}`

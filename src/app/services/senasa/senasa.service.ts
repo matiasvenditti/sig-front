@@ -16,6 +16,10 @@ export class SenasaService {
     return this.http.get<Senasa[]>(SenasaApi.get.findAll());
   }
 
+  getByProduct(productId: number) {
+    return this.http.get<Senasa>(SenasaApi.get.findByProduct(productId));
+  }
+
   create(senasa: SenasaDTO) {
     return this.http.post<Senasa>(SenasaApi.post.create(), senasa);
   }

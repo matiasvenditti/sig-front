@@ -34,12 +34,9 @@ export class UpdateSenasaComponent implements OnInit {
     this.min = new Date();
 
     this.senasaForm = this.fb.group({
-      denomination: [this.senasa.denomination, Validators.required],
+      reviewRequired: [this.senasa.reviewRequired, Validators.required],
       businessName: [this.senasa.businessName, Validators.required],
-      certification: [this.senasa.certification, Validators.required],
       country: [this.senasa.country, Validators.required],
-      expirationDate: [null, Validators.required],
-      // componentes: ['', Validators.required],
       product: [this.senasa.product, Validators.required]
     });
 

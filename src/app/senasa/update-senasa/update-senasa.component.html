@@ -3,7 +3,6 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="senasaForm">
-          <input class="input" fullWidth nbInput type="text" placeholder="Denominación" formControlName="denomination">
           <input class="input" fullWidth nbInput type="text" placeholder="Razón Social" formControlName="businessName">
         
           <nb-select formControlName="country" class="input" fullWidth placeholder="País">
@@ -13,11 +12,8 @@
           <nb-select formControlName="product" class="input" fullWidth placeholder="Producto">
               <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
             </nb-select>
-
-          <input class="input" fullWidth nbInput placeholder="Expiración" [nbDatepicker]="datepicker" formControlName="expirationDate">
-          <nb-datepicker [min]="min" #datepicker></nb-datepicker>
           
-          <nb-checkbox formControlName="certification" class="input" status="primary">Certificación</nb-checkbox>
+          <nb-checkbox formControlName="reviewRequired" class="input" status="primary">Requiere Control de Calidad</nb-checkbox>
       </form>
 
   </nb-card-body>

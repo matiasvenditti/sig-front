@@ -15,8 +15,16 @@
     </div>
   </nb-step>
 
+  <nb-step label="Distribución">
+      <app-distribution></app-distribution>
+      <div class="step-button-container">
+        <button class="margin-right" nbButton nbStepperPrevious>anterior</button>
+        <button nbButton nbStepperNext>siguiente</button>
+      </div>
+    </nb-step>
+
   <nb-step label="Calidad">
-    <h4>Step content #3</h4>
+    <app-quality></app-quality>
     <div class="step-button-container">
       <button class="margin-right" nbButton nbStepperPrevious>anterior</button>
       <button nbButton nbStepperNext>siguiente</button>

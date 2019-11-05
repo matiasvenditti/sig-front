@@ -1,0 +1,46 @@
+<nb-card status="primary">
+    <nb-card-header>Datos de Producto</nb-card-header>
+    <nb-card-body>
+        <table [nbTreeGrid]="dataSource">
+            <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+          
+            <ng-container nbTreeGridColumnDef="id">
+              <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+              <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+            </ng-container>
+
+            <ng-container nbTreeGridColumnDef="reviewRequired">
+                <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Requiere Calidad</th>
+                <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+                  <nb-icon *ngIf="row.data['reviewRequired']" status="success" icon="checkmark-outline"></nb-icon>
+                  <nb-icon *ngIf="!row.data['reviewRequired']" status="danger" icon="close-outline"></nb-icon>
+                </td>
+              </ng-container>
+          
+            <ng-container nbTreeGridColumnDef="businessName">
+              <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Nombre</th>
+              <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['businessName']}}</td>
+            </ng-container>
+          
+            <ng-container nbTreeGridColumnDef="country">
+              <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Pais</th>
+              <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['country']}}</td>
+            </ng-container>
+
+            <ng-container nbTreeGridColumnDef="createdDate">
+              <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha</th>
+              <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
+            </ng-container>
+          
+          </table>
+  
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="button-container">
+        <button *ngIf="senasa?.reviewRequired" (click)="quality()" class="margin-right" nbButton>Calidad</button>
+        <button *ngIf="!senasa?.reviewRequired" (click)="stock()" class="margin-right" nbButton>Almacenaje</button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+  

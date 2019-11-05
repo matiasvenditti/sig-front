@@ -60,6 +60,9 @@ import { OrderModalComponent } from './order-modal/order-modal.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { DocumentationModalComponent } from './documentation-modal/documentation-modal.component';
 import { NoDocumentationModalComponent } from './no-documentation-modal/no-documentation-modal.component';
+import { QualityComponent } from './quality/quality.component';
+import { DistributionComponent } from './distribution/distribution.component';
+import { DistributionModalComponent } from './distribution-modal/distribution-modal.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +101,10 @@ import { NoDocumentationModalComponent } from './no-documentation-modal/no-docum
     OrderModalComponent,
     DocumentationComponent,
     DocumentationModalComponent,
-    NoDocumentationModalComponent
+    NoDocumentationModalComponent,
+    QualityComponent,
+    DistributionComponent,
+    DistributionModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -150,7 +156,8 @@ import { NoDocumentationModalComponent } from './no-documentation-modal/no-docum
     UpdateSupplierComponent,
     OrderModalComponent,
     DocumentationModalComponent,
-    NoDocumentationModalComponent
+    NoDocumentationModalComponent,
+    DistributionModalComponent
   ]
 })
 export class AppModule { }

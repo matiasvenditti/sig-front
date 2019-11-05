@@ -2,10 +2,10 @@ import { ProductDTO } from './procuct-dto';
 
 export interface SenasaDTO{
     id: number,
-    denomination: string,
+    reviewRequired: boolean,
     businessName: string,
     country: string,
     certification: boolean,
-    expirationDate: Date
+    createdDate: Date
     product: ProductDTO
 }
