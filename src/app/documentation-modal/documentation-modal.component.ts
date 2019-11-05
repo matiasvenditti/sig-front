@@ -54,7 +54,6 @@ export class DocumentationModalComponent implements OnInit {
 
   submit() {
     const remito: RemitoDTO = {...this.orderForm.value, items: this.createProducts};
-    console.log(remito);
     this.orderService.validateDocumentation(this.order.id, remito).subscribe(res => {
       this.toasterService.showSuccess('Documentación validada exitosamente', 'Operación Exitosa');
       this.dialogRef.close(res);

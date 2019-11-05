@@ -59,6 +59,7 @@ import { ReceptionComponent } from './reception/reception.component';
 import { OrderModalComponent } from './order-modal/order-modal.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { DocumentationModalComponent } from './documentation-modal/documentation-modal.component';
+import { NoDocumentationModalComponent } from './no-documentation-modal/no-documentation-modal.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { DocumentationModalComponent } from './documentation-modal/documentation
     ReceptionComponent,
     OrderModalComponent,
     DocumentationComponent,
-    DocumentationModalComponent
+    DocumentationModalComponent,
+    NoDocumentationModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -147,7 +149,8 @@ import { DocumentationModalComponent } from './documentation-modal/documentation
     DeleteSupplierComponent,
     UpdateSupplierComponent,
     OrderModalComponent,
-    DocumentationModalComponent
+    DocumentationModalComponent,
+    NoDocumentationModalComponent
   ]
 })
 export class AppModule { }

@@ -32,7 +32,7 @@
         <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
         <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
           <div class="action-container">
-              <button *ngIf="inSecondStep(row.data['state'])" status="danger" nbButton><nb-icon icon="download-outline"></nb-icon></button>
+              <button *ngIf="inSecondStep(row.data['state'])" status="danger" nbButton (click)="openClaim(row.data)"><nb-icon icon="download-outline"></nb-icon></button>
               <button *ngIf="inSecondStep(row.data['state'])" nbButton (click)="open(row.data)"><nb-icon icon="log-in-outline"></nb-icon></button>
               <span *ngIf="!inSecondStep(row.data['state'])">Documentación Válida</span>
           </div>

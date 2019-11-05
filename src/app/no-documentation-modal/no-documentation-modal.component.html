@@ -1,0 +1,20 @@
+<nb-card status="danger">
+  <nb-card-header>Orden de No Conformidad de Documentación</nb-card-header>
+  <nb-card-body>
+    <form class="form" [formGroup]="claimForm">
+      <input fullWidth class="input" nbInput type="text" placeholder="Titulo" formControlName="title">
+      <input fullWidth class="input" nbInput type="text" placeholder="Descripción" formControlName="message">
+
+      <nb-select formControlName="type" class="input" fullWidth placeholder="Tipo de Reclamo">
+        <nb-option *ngFor="let type of claimTypes" [value]="type">{{type | titlecase}}</nb-option>
+      </nb-select>
+    </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="close()" class="margin-right" status="danger" nbButton>Cancel</button>
+      <button (click)="submit()" status="success" nbButton [disabled]="!claimForm.valid">Submit</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

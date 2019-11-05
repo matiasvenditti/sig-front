@@ -6,6 +6,7 @@ import { OrderService } from '../services/order/order.service';
 import { DocumentationModalComponent } from '../documentation-modal/documentation-modal.component';
 import { OrderState } from '../model/order-state';
 import { StateManagerService } from '../services/state-manager.service';
+import { NoDocumentationModalComponent } from '../no-documentation-modal/no-documentation-modal.component';
 
 @Component({
   selector: 'app-documentation',
@@ -48,6 +49,18 @@ export class DocumentationComponent implements OnInit {
 
   open(order: OrderDTO) {
     this.dialogService.open(DocumentationModalComponent, {context: {order: order} as Partial<any>}).onClose.subscribe((order: OrderDTO) => {
+      if(order) {
+        const index = this.orderData.findIndex(find => find.id === order.id);
+        if (index !== -1) {
+          this.orderData[index] = order;
+          this.initData();
+        }
+      }
+    });
+  }
+
+  openClaim(order: OrderDTO) {
+    this.dialogService.open(NoDocumentationModalComponent, {context: {order: order} as Partial<any>}).onClose.subscribe((order: OrderDTO) => {
       if(order) {
         const index = this.orderData.findIndex(find => find.id === order.id);
         if (index !== -1) {
