@@ -3,14 +3,14 @@
   <nb-card-body>
 
       <form class="form" [formGroup]="orderForm">
-          <input [status]="get('price').invalid && (get('price').dirty || get('price').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Price" formControlName="price">
+          <input [status]="get('price').invalid && (get('price').dirty || get('price').touched) ? 'danger' : 'primary'" min="0" class="input" fullWidth nbInput type="number" placeholder="Precio" formControlName="price">
 
           <div *ngIf="get('price').invalid && (get('price').dirty || get('price').touched)" class="error-container">
             <div class="input-error" *ngIf="get('price').errors.required">El campo <strong>Precio</strong> es requerido</div>
             <div class="input-error" *ngIf="get('price').errors.min">El campo <strong>Precio</strong> tiene un valor minimo de 0</div>
           </div>
 
-          <form class="sub-form" [formGroup]="productForm">  
+          <form class="sub-form" [formGroup]="productForm">
                 <nb-layout-column>
                     <nb-select formControlName="product" class="input" placeholder="Producto">
                       <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>

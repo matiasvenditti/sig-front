@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ProductItemDTO } from '../dto/product-item-dto';
 import { TreeNode } from '../dto/tree-node';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
 import { ProductService } from '../services/product/product.service';
 import { DistributionModalComponent } from '../distribution-modal/distribution-modal.component';
 import { OrderItemService } from '../services/order-item/order-item.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-distribution',
@@ -15,6 +16,11 @@ export class DistributionComponent implements OnInit {
 
   private data: TreeNode<ProductItemDTO>[];
   private productItemData: ProductItemDTO[] = [];
+
+  private step: number = 3;
+
+  @Input()
+  private subject: BehaviorSubject<number>;
 
   customColumn = 'distribuir';
   defaultColumns = ['id', 'product', 'quantity', 'state'];
@@ -27,6 +33,17 @@ export class DistributionComponent implements OnInit {
     private orderItemService: OrderItemService) { }
 
   ngOnInit() {
+    this.subject.subscribe((index) => {
+      if (this.step === index) {
+        this.init();
+      }
+    });
+
+    this.init();
+
+  }
+
+  init() {
     this.orderItemService.findValid().subscribe(res => {
       this.productItemData = res;
       this.data = res.map(elem => {return {data: elem}});

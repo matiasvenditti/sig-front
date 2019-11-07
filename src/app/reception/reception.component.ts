@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { OrderService } from '../services/order/order.service';
 import { OrderDTO } from '../dto/order-dto';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
@@ -6,6 +6,7 @@ import { TreeNode } from '../dto/tree-node';
 import { OrderModalComponent } from '../order-modal/order-modal.component';
 import { OrderState } from '../model/order-state';
 import { StateManagerService } from '../services/state-manager.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-reception',
@@ -13,6 +14,9 @@ import { StateManagerService } from '../services/state-manager.service';
   styleUrls: ['./reception.component.sass']
 })
 export class ReceptionComponent implements OnInit {
+
+  @Input()
+  private subject: BehaviorSubject<any>;
 
   private data: TreeNode<OrderDTO>[];
   private orderData: OrderDTO[] = [];
@@ -22,12 +26,23 @@ export class ReceptionComponent implements OnInit {
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<OrderDTO>;
 
+  private step: number = 1;
+
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<OrderDTO>,
     private orderService: OrderService,
     private dialogService: NbDialogService,
     private stateManagerService: StateManagerService) { }
 
   ngOnInit() {
+    this.subject.subscribe((index) => {
+      if (this.step === index) {
+        this.init();
+      }
+    });
+    this.init();
+  }
+
+  init() {
     this.orderService.getAll().subscribe(res => {
       this.orderData = res;
       this.data = res.map(elem => {return {data: elem}});

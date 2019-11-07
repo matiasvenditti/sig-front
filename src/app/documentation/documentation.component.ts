@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { TreeNode } from '../dto/tree-node';
 import { OrderDTO } from '../dto/order-dto';
 import { NbTreeGridDataSource, NbTreeGridDataSourceBuilder, NbDialogService } from '@nebular/theme';
@@ -7,6 +7,7 @@ import { DocumentationModalComponent } from '../documentation-modal/documentatio
 import { OrderState } from '../model/order-state';
 import { StateManagerService } from '../services/state-manager.service';
 import { NoDocumentationModalComponent } from '../no-documentation-modal/no-documentation-modal.component';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-documentation',
@@ -17,6 +18,11 @@ export class DocumentationComponent implements OnInit {
 
   private data: TreeNode<OrderDTO>[];
   private orderData: OrderDTO[] = [];
+
+  private step: number = 2;
+
+  @Input()
+  private subject: BehaviorSubject<number>;
 
   customColumn = 'validar';
   defaultColumns = ['id', 'createdDate', 'supplier', 'state'];
@@ -29,11 +35,22 @@ export class DocumentationComponent implements OnInit {
     private stateManagerService: StateManagerService) { }
 
   ngOnInit() {
+    this.subject.subscribe((index) => {
+      if (this.step === index) {
+        this.init();
+      }
+    });
+
+    this.init();
+  }
+
+  init() {
     this.orderService.getAllPlant().subscribe(res => {
       this.orderData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
     });
+
   }
 
   enter(order: OrderDTO) {
