@@ -65,6 +65,7 @@ import { DistributionComponent } from './distribution/distribution.component';
 import { DistributionModalComponent } from './distribution-modal/distribution-modal.component';
 import { StockComponent } from './stock/stock.component';
 import { SendStockModalComponent } from './send-stock-modal/send-stock-modal.component';
+import { NonConformityModalComponent } from './non-conformity-modal/non-conformity-modal.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { SendStockModalComponent } from './send-stock-modal/send-stock-modal.com
     DistributionComponent,
     DistributionModalComponent,
     StockComponent,
-    SendStockModalComponent
+    SendStockModalComponent,
+    NonConformityModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -162,7 +164,8 @@ import { SendStockModalComponent } from './send-stock-modal/send-stock-modal.com
     DocumentationModalComponent,
     NoDocumentationModalComponent,
     DistributionModalComponent,
-    SendStockModalComponent
+    SendStockModalComponent,
+    NonConformityModalComponent
   ]
 })
 export class AppModule { }

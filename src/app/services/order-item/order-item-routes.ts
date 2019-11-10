@@ -6,7 +6,8 @@ export const OrderItemApi = {
         findAll: () => `${apiUrl}`,
         findValid: () => `${apiUrl}/valid`,
         findQuality: () => `${apiUrl}/quality`,
-        findStock: () => `${apiUrl}/stock`
+        findStock: () => `${apiUrl}/stock`,
+        findNonConformity: () => `${apiUrl}/non-conformity`
     },
     post: {
         create: () => `${apiUrl}`,

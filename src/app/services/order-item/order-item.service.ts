@@ -22,6 +22,10 @@ export class OrderItemService {
     return this.http.get(OrderItemApi.get.findStock());
   }
 
+  findNonConformity() {
+    return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findNonConformity());
+  }
+
   findValid() {
     return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findValid());
   }

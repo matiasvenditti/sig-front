@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { OrderState } from '../model/order-state';
+import {OrderItemState} from '../model/order-item-state';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,14 @@ export class StateManagerService {
   }
 
   inForthStep(state: string): boolean {
-    return OrderState.QUALITY === state;
+    return OrderItemState.QUALITY === state;
   }
 
   inFifthStep(state: string): boolean {
-    return OrderState.STOCK === state;
+    return OrderItemState.STOCK === state;
+  }
+
+  inNonConformity(state: string): boolean {
+    return OrderItemState.NONCONFORMITY === state;
   }
 }

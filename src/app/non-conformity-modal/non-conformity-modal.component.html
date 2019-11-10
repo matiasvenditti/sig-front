@@ -1,0 +1,41 @@
+<nb-card status="danger">
+  <nb-card-header>No Conformidad Por Calidad</nb-card-header>
+  <nb-card-body class="width">
+    <table class="table-width" [nbTreeGrid]="dataSource">
+      <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+      <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+      <ng-container nbTreeGridColumnDef="id">
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="x">
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>X</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].x}}</td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="y">
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Y</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].y}}</td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="z">
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Z</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].z}}</td>
+      </ng-container>
+
+      <ng-container nbTreeGridColumnDef="quantity">
+        <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
+        <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['quantity']}}</td>
+      </ng-container>
+
+    </table>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button status="danger" (click)="nonConformity()" class="margin-right" nbButton>No Conformidad</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

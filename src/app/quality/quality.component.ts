@@ -7,6 +7,7 @@ import { OrderItemService } from '../services/order-item/order-item.service';
 import {BehaviorSubject} from 'rxjs';
 import {StateManagerService} from '../services/state-manager.service';
 import {SendStockModalComponent} from '../send-stock-modal/send-stock-modal.component';
+import {NonConformityModalComponent} from '../non-conformity-modal/non-conformity-modal.component';
 
 @Component({
   selector: 'app-quality',
@@ -65,8 +66,21 @@ export class QualityComponent implements OnInit {
     return this.stateManagerService.inFifthStep(state);
   }
 
+  inNonConformity(state: string): boolean {
+    return this.stateManagerService.inNonConformity(state);
+  }
+
   open(productItem: ProductItemDTO) {
     this.dialogService.open(SendStockModalComponent, {context: {productItem} as Partial<any>}).onClose.subscribe(item => {
+      if (item) {
+        const index: number = this.productItemData.findIndex(pItem => pItem.id === item.id);
+        this.productItemData[index] = item;
+      }
+    });
+  }
+
+  openNonConformity(productItem: ProductItemDTO) {
+    this.dialogService.open(NonConformityModalComponent, {context: {productItem} as Partial<any>}).onClose.subscribe(item => {
       if (item) {
         const index: number = this.productItemData.findIndex(pItem => pItem.id === item.id);
         this.productItemData[index] = item;
