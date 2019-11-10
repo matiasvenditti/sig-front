@@ -17,4 +17,8 @@ export class OrderItemService {
   findValid() {
     return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findValid());
   }
+
+  distribute(orderItem: ProductItemDTO, orderItemState: string) {
+    return this.http.post<ProductItemDTO>(OrderItemApi.post.distribute(), {orderItem, type: orderItemState});
+  }
 }

@@ -54,24 +54,43 @@ export class DistributionModalComponent implements OnInit {
 
   quality() {
     this.productItem.state = OrderItemState.QUALITY;
-    this.orderItemService.setState(this.productItem).subscribe(res => {
+    this.orderItemService.distribute(this.productItem, OrderItemState.QUALITY).subscribe(res => {
       this.toasterService.showSuccess('Producto enviado a control de calidad exitosamente', 'Operación Exitosa');
       this.dialogRef.close(res);
     }, () => {
       this.toasterService.showError('No se pudo enviar a calidad el producto', 'Error');
       this.close();
-    })
+    });
+
+
+    // this.orderItemService.setState(this.productItem).subscribe(res => {
+    //   this.toasterService.showSuccess('Producto enviado a control de calidad exitosamente', 'Operación Exitosa');
+    //   this.dialogRef.close(res);
+    // }, () => {
+    //   this.toasterService.showError('No se pudo enviar a calidad el producto', 'Error');
+    //   this.close();
+    // });
   }
 
   stock() {
     this.productItem.state = OrderItemState.STOCK;
-    this.orderItemService.setState(this.productItem).subscribe(res => {
+    this.orderItemService.distribute(this.productItem, OrderItemState.STOCK).subscribe(res => {
       this.toasterService.showSuccess('Producto enviado a almacenaje exitosamente', 'Operación Exitosa');
       this.dialogRef.close(res);
     }, () => {
       this.toasterService.showError('No se pudo enviar a almacenaje el producto', 'Error');
       this.close();
-    })
+    });
+
+
+    // this.productItem.state = OrderItemState.STOCK;
+    // this.orderItemService.setState(this.productItem).subscribe(res => {
+    //   this.toasterService.showSuccess('Producto enviado a almacenaje exitosamente', 'Operación Exitosa');
+    //   this.dialogRef.close(res);
+    // }, () => {
+    //   this.toasterService.showError('No se pudo enviar a almacenaje el producto', 'Error');
+    //   this.close();
+    // });
   }
 
   close() {

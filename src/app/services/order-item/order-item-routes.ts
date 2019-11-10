@@ -7,7 +7,8 @@ export const OrderItemApi = {
         findValid: () => `${apiUrl}/valid`
     },
     post: {
-        create: () => `${apiUrl}`
+        create: () => `${apiUrl}`,
+        distribute: () => `${apiUrl}/rack`
     },
     put: {
         update: (id: number) => `${apiUrl}/${id}`

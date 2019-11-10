@@ -1,10 +1,10 @@
 <nb-card status="primary">
     <nb-card-header>Datos de Producto</nb-card-header>
     <nb-card-body>
-        <table [nbTreeGrid]="dataSource">
+        <table class="table-width" [nbTreeGrid]="dataSource">
             <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
             <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
-          
+
             <ng-container nbTreeGridColumnDef="id">
               <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
               <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
@@ -17,12 +17,12 @@
                   <nb-icon *ngIf="!row.data['reviewRequired']" status="danger" icon="close-outline"></nb-icon>
                 </td>
               </ng-container>
-          
+
             <ng-container nbTreeGridColumnDef="businessName">
               <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Nombre</th>
               <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['businessName']}}</td>
             </ng-container>
-          
+
             <ng-container nbTreeGridColumnDef="country">
               <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Pais</th>
               <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['country']}}</td>
@@ -32,9 +32,9 @@
               <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Fecha</th>
               <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['createdDate']}}</td>
             </ng-container>
-          
+
           </table>
-  
+
     </nb-card-body>
     <nb-card-footer>
       <div class="button-container">
@@ -43,4 +43,3 @@
       </div>
     </nb-card-footer>
   </nb-card>
-  
