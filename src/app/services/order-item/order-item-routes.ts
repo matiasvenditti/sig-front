@@ -4,7 +4,9 @@ const apiUrl = `${environment.apiUrl}/items`;
 export const OrderItemApi = {
     get: {
         findAll: () => `${apiUrl}`,
-        findValid: () => `${apiUrl}/valid`
+        findValid: () => `${apiUrl}/valid`,
+        findQuality: () => `${apiUrl}/quality`,
+        findStock: () => `${apiUrl}/stock`
     },
     post: {
         create: () => `${apiUrl}`,

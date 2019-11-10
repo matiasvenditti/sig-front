@@ -5,6 +5,7 @@ export interface ProductItemDTO{
     id: number,
     product: ProductDTO,
     quantity: number,
-    state: string
+    state: string,
+    stand: StandDTO
 
 }

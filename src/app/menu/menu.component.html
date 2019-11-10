@@ -32,7 +32,7 @@
   </nb-step>
 
   <nb-step label="Almacenamiento">
-    <h4>Step content #4</h4>
+    <app-stock [subject]="subject"></app-stock>
     <div class="step-button-container">
       <button (click)="prev()" class="margin-right" nbButton nbStepperPrevious>anterior</button>
       <button (click)="next()" status="success" nbButton nbStepperNext>terminar</button>

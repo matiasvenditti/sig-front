@@ -63,6 +63,7 @@ import { NoDocumentationModalComponent } from './no-documentation-modal/no-docum
 import { QualityComponent } from './quality/quality.component';
 import { DistributionComponent } from './distribution/distribution.component';
 import { DistributionModalComponent } from './distribution-modal/distribution-modal.component';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { DistributionModalComponent } from './distribution-modal/distribution-mo
     NoDocumentationModalComponent,
     QualityComponent,
     DistributionComponent,
-    DistributionModalComponent
+    DistributionModalComponent,
+    StockComponent
   ],
   imports: [
     HttpClientModule,

@@ -14,6 +14,14 @@ export class OrderItemService {
     return this.http.put(OrderItemApi.put.update(productItem.id), productItem);
   }
 
+  findQuality() {
+    return this.http.get(OrderItemApi.get.findQuality());
+  }
+
+  findStock() {
+    return this.http.get(OrderItemApi.get.findStock());
+  }
+
   findValid() {
     return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findValid());
   }
