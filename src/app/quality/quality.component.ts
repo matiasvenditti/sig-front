@@ -5,6 +5,8 @@ import { ProductService } from '../services/product/product.service';
 import { TreeNode } from '../dto/tree-node';
 import { OrderItemService } from '../services/order-item/order-item.service';
 import {BehaviorSubject} from 'rxjs';
+import {StateManagerService} from '../services/state-manager.service';
+import {SendStockModalComponent} from '../send-stock-modal/send-stock-modal.component';
 
 @Component({
   selector: 'app-quality',
@@ -16,8 +18,8 @@ export class QualityComponent implements OnInit {
   private data: TreeNode<ProductItemDTO>[];
   private productItemData: ProductItemDTO[] = [];
 
-  customColumn = 'state';
-  defaultColumns = ['id', 'product', 'quantity'];
+  customColumn = 'action';
+  defaultColumns = ['id', 'product', 'quantity', 'state'];
   allColumns = [...this.defaultColumns, this.customColumn];
   dataSource: NbTreeGridDataSource<ProductItemDTO>;
 
@@ -29,7 +31,8 @@ export class QualityComponent implements OnInit {
   constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<ProductItemDTO>,
     private productService: ProductService,
     private dialogService: NbDialogService,
-    private orderItemService: OrderItemService) { }
+    private orderItemService: OrderItemService,
+    private stateManagerService: StateManagerService) { }
 
   ngOnInit() {
     this.subject.subscribe((index) => {
@@ -42,9 +45,7 @@ export class QualityComponent implements OnInit {
   }
 
   init() {
-
-    this.orderItemService.findValid().subscribe(res => {
-      console.log(res);
+    this.orderItemService.findQuality().subscribe(res => {
       this.productItemData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
@@ -54,6 +55,23 @@ export class QualityComponent implements OnInit {
   initData() {
     this.data = this.productItemData.map(elem => {return {data: elem}});
     this.dataSource = this.dataSourceBuilder.create(this.data);
+  }
+
+  inForthStep(state: string): boolean {
+    return this.stateManagerService.inForthStep(state);
+  }
+
+  inFifthStep(state: string): boolean {
+    return this.stateManagerService.inFifthStep(state);
+  }
+
+  open(productItem: ProductItemDTO) {
+    this.dialogService.open(SendStockModalComponent, {context: {productItem} as Partial<any>}).onClose.subscribe(item => {
+      if (item) {
+        const index: number = this.productItemData.findIndex(pItem => pItem.id === item.id);
+        this.productItemData[index] = item;
+      }
+    });
   }
 
 }

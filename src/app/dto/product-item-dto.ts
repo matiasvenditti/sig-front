@@ -1,4 +1,5 @@
 import { ProductDTO } from './procuct-dto';
+import {StandDTO} from './stand-dto';
 
 export interface ProductItemDTO{
 

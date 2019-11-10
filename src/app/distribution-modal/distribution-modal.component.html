@@ -1,7 +1,7 @@
 <nb-card status="primary">
     <nb-card-header>Datos de Producto</nb-card-header>
-    <nb-card-body>
-        <table class="table-width" [nbTreeGrid]="dataSource">
+    <nb-card-body class="width">
+        <table [nbTreeGrid]="dataSource">
             <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
             <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
 

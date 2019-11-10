@@ -15,4 +15,12 @@ export class StateManagerService {
   inSecondStep(state: string): boolean {
     return OrderState.PLANT === state;
   }
+
+  inForthStep(state: string): boolean {
+    return OrderState.QUALITY === state;
+  }
+
+  inFifthStep(state: string): boolean {
+    return OrderState.STOCK === state;
+  }
 }

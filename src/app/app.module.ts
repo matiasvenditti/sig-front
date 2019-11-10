@@ -4,11 +4,11 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { 
-  NbThemeModule, 
+import {
+  NbThemeModule,
   NbStepperModule,
-  NbLayoutModule, 
-  NbButtonModule, 
+  NbLayoutModule,
+  NbButtonModule,
   NbCardModule,
   NbInputModule,
   NbSidebarModule,
@@ -64,6 +64,7 @@ import { QualityComponent } from './quality/quality.component';
 import { DistributionComponent } from './distribution/distribution.component';
 import { DistributionModalComponent } from './distribution-modal/distribution-modal.component';
 import { StockComponent } from './stock/stock.component';
+import { SendStockModalComponent } from './send-stock-modal/send-stock-modal.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { StockComponent } from './stock/stock.component';
     QualityComponent,
     DistributionComponent,
     DistributionModalComponent,
-    StockComponent
+    StockComponent,
+    SendStockModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -159,7 +161,8 @@ import { StockComponent } from './stock/stock.component';
     OrderModalComponent,
     DocumentationModalComponent,
     NoDocumentationModalComponent,
-    DistributionModalComponent
+    DistributionModalComponent,
+    SendStockModalComponent
   ]
 })
 export class AppModule { }

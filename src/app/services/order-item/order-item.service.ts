@@ -15,7 +15,7 @@ export class OrderItemService {
   }
 
   findQuality() {
-    return this.http.get(OrderItemApi.get.findQuality());
+    return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findQuality());
   }
 
   findStock() {
