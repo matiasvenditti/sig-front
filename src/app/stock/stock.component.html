@@ -1,3 +1,48 @@
-<p>
-  stock works!
-</p>
+<div class="section-header">
+  <h2>Stock Producción</h2>
+</div>
+
+<h5>Unidades en Stock de producción {{amount}}</h5>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource">
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="product">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="quantity">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['quantity']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="x">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>X</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].x}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="y">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Y</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].y}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="z">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Z</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['stand'].z}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="state">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Estado</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['state'] | titlecase}}</td>
+  </ng-container>
+
+</table>

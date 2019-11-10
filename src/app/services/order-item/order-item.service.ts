@@ -19,7 +19,7 @@ export class OrderItemService {
   }
 
   findStock() {
-    return this.http.get(OrderItemApi.get.findStock());
+    return this.http.get<ProductItemDTO[]>(OrderItemApi.get.findStock());
   }
 
   findNonConformity() {

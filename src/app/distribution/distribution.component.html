@@ -1,9 +1,11 @@
 <div class="section-header">
     <h2>Distribución</h2>
   </div>
-  
+
+  <h5>Unidades en a distribuir {{amount}}</h5>
+
   <input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
-  
+
   <table [nbTreeGrid]="dataSource">
     <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
     <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
@@ -12,22 +14,22 @@
         <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
         <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
       </ng-container>
-  
+
     <ng-container nbTreeGridColumnDef="product">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Producto</th>
       <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['product'].name}}</td>
     </ng-container>
-  
+
     <ng-container nbTreeGridColumnDef="quantity">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Cantidad</th>
       <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['quantity']}}</td>
     </ng-container>
-  
+
     <ng-container nbTreeGridColumnDef="state">
       <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Estado</th>
       <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['state'] | titlecase}}</td>
     </ng-container>
-  
+
     <ng-container [nbTreeGridColumnDef]="customColumn">
         <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
         <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
@@ -37,5 +39,5 @@
           </div>
         </td>
     </ng-container>
-  
+
   </table>

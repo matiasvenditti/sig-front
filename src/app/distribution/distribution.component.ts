@@ -6,6 +6,7 @@ import { ProductService } from '../services/product/product.service';
 import { DistributionModalComponent } from '../distribution-modal/distribution-modal.component';
 import { OrderItemService } from '../services/order-item/order-item.service';
 import {BehaviorSubject} from 'rxjs';
+import {OrderItemState} from '../model/order-item-state';
 
 @Component({
   selector: 'app-distribution',
@@ -16,6 +17,7 @@ export class DistributionComponent implements OnInit {
 
   private data: TreeNode<ProductItemDTO>[];
   private productItemData: ProductItemDTO[] = [];
+  private amount: number;
 
   private step: number = 3;
 
@@ -48,7 +50,8 @@ export class DistributionComponent implements OnInit {
       this.productItemData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
-    })
+      this.amount = this.getAmount();
+    });
   }
 
   initData() {
@@ -62,8 +65,13 @@ export class DistributionComponent implements OnInit {
         const index = this.productItemData.findIndex(item => item.id === productItem.id);
         this.productItemData[index] = productItem;
         this.initData();
+        this.amount = this.getAmount();
       }
     })
+  }
+
+  getAmount(): number {
+    return this.productItemData.filter(item => item.state === OrderItemState.INITIAL).reduce((acc, curr) => acc + curr.quantity, 0);
   }
 
 }

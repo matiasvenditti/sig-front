@@ -8,6 +8,7 @@ import {BehaviorSubject} from 'rxjs';
 import {StateManagerService} from '../services/state-manager.service';
 import {SendStockModalComponent} from '../send-stock-modal/send-stock-modal.component';
 import {NonConformityModalComponent} from '../non-conformity-modal/non-conformity-modal.component';
+import {OrderItemState} from '../model/order-item-state';
 
 @Component({
   selector: 'app-quality',
@@ -18,6 +19,7 @@ export class QualityComponent implements OnInit {
 
   private data: TreeNode<ProductItemDTO>[];
   private productItemData: ProductItemDTO[] = [];
+  private amount: number;
 
   customColumn = 'action';
   defaultColumns = ['id', 'product', 'quantity', 'state'];
@@ -50,6 +52,7 @@ export class QualityComponent implements OnInit {
       this.productItemData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
+      this.amount = this.getAmount();
     });
   }
 
@@ -75,6 +78,7 @@ export class QualityComponent implements OnInit {
       if (item) {
         const index: number = this.productItemData.findIndex(pItem => pItem.id === item.id);
         this.productItemData[index] = item;
+        this.amount = this.getAmount();
       }
     });
   }
@@ -84,8 +88,13 @@ export class QualityComponent implements OnInit {
       if (item) {
         const index: number = this.productItemData.findIndex(pItem => pItem.id === item.id);
         this.productItemData[index] = item;
+        this.amount = this.getAmount();
       }
     });
+  }
+
+  getAmount(): number {
+    return this.productItemData.filter(item => item.state === OrderItemState.QUALITY).reduce((acc, curr) => acc + curr.quantity, 0);
   }
 
 }
