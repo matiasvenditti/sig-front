@@ -1,0 +1,16 @@
+<nb-card status="danger">
+  <nb-card-header>Eliminar Orden de No Conformidad</nb-card-header>
+  <nb-card-body>
+
+    <form class="form" [formGroup]="deleteClaimForm">
+      <label class="label">Escriba <strong>{{productItem.product.name}}</strong> para eliminar la orden</label>
+      <input fullWidth nbInput type="text" placeholder="Producto de la Orden" formControlName="confirm">
+    </form>
+
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="button-container">
+      <button (click)="submit()" status="danger" nbButton [disabled]="!deleteClaimForm.valid">Eliminar</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

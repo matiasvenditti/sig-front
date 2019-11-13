@@ -33,4 +33,8 @@ export class OrderItemService {
   distribute(orderItem: ProductItemDTO, orderItemState: string) {
     return this.http.post<ProductItemDTO>(OrderItemApi.post.distribute(), {orderItem, type: orderItemState});
   }
+
+  remove(productItemId: number) {
+    return this.http.delete(OrderItemApi.delete.delete(productItemId));
+  }
 }

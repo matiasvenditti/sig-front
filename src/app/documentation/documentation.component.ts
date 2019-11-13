@@ -96,4 +96,12 @@ export class DocumentationComponent implements OnInit {
   inSecondStep(state: string) {
     return this.stateManagerService.inSecondStep(state);
   }
+
+  inThirdStep(state: string) {
+    return this.stateManagerService.inThirdStep(state);
+  }
+
+  inConflict(state: string) {
+    return this.stateManagerService.inConflict(state);
+  }
 }

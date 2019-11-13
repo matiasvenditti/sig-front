@@ -69,6 +69,7 @@ import { NonConformityModalComponent } from './non-conformity-modal/non-conformi
 import { NonConformityDocumentationComponent } from './non-conformity-documentation/non-conformity-documentation.component';
 import { NonConformityQualityComponent } from './non-conformity-quality/non-conformity-quality.component';
 import { DeleteClaimModalComponent } from './delete-claim-modal/delete-claim-modal.component';
+import { NoQualityModalComponent } from './no-quality-modal/no-quality-modal.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { DeleteClaimModalComponent } from './delete-claim-modal/delete-claim-mod
     NonConformityModalComponent,
     NonConformityDocumentationComponent,
     NonConformityQualityComponent,
-    DeleteClaimModalComponent
+    DeleteClaimModalComponent,
+    NoQualityModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -172,7 +174,8 @@ import { DeleteClaimModalComponent } from './delete-claim-modal/delete-claim-mod
     DistributionModalComponent,
     SendStockModalComponent,
     NonConformityModalComponent,
-    DeleteClaimModalComponent
+    DeleteClaimModalComponent,
+    NoQualityModalComponent
   ]
 })
 export class AppModule { }

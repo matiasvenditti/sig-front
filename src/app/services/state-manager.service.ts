@@ -17,6 +17,10 @@ export class StateManagerService {
     return OrderState.PLANT === state;
   }
 
+  inThirdStep(state: string): boolean {
+    return OrderState.VALID === state;
+  }
+
   inForthStep(state: string): boolean {
     return OrderItemState.QUALITY === state;
   }
@@ -27,5 +31,9 @@ export class StateManagerService {
 
   inNonConformity(state: string): boolean {
     return OrderItemState.NONCONFORMITY === state;
+  }
+
+  inConflict(state: string): boolean {
+    return OrderState.CONFLICT === state;
   }
 }
