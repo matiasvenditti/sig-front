@@ -1,0 +1,41 @@
+<div class="section-header">
+  <h2>No Conformidad por Documentación</h2>
+</div>
+
+<input fullWidth nbInput placeholder="Buscar" [nbFilterInput]="dataSource" id="search" class="search-input">
+
+<table [nbTreeGrid]="dataSource">
+  <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+  <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+  <ng-container nbTreeGridColumnDef="id">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>ID</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['id']}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="title">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Título</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['title'] | titlecase}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="message">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Mensaje</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['message'] | titlecase}}</td>
+  </ng-container>
+
+  <ng-container nbTreeGridColumnDef="order">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>Orden</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data['order'].id}}</td>
+  </ng-container>
+
+  <ng-container [nbTreeGridColumnDef]="customColumn">
+    <th class="center" nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn | titlecase}}</th>
+    <td class="center" nbTreeGridCell *nbTreeGridCellDef="let row">
+      <div class="action-container">
+        <button status="danger" nbButton (click)="openDeleteModal(row.data)"><nb-icon icon="trash-outline"></nb-icon></button>
+        <button nbButton (click)="resolve(row.data)"><nb-icon icon="log-in-outline"></nb-icon></button>
+      </div>
+    </td>
+  </ng-container>
+
+</table>

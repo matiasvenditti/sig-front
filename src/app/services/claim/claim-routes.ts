@@ -7,7 +7,8 @@ export const ClaimApi = {
         findOne: (id: number) => `${apiUrl}/${id}`
     },
     post: {
-        create: () => `${apiUrl}`
+        create: () => `${apiUrl}`,
+        resolve: () => `${apiUrl}/resolve`
     },
     delete: {
         delete: (id: number) => `${apiUrl}/${id}`

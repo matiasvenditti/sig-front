@@ -66,6 +66,9 @@ import { DistributionModalComponent } from './distribution-modal/distribution-mo
 import { StockComponent } from './stock/stock.component';
 import { SendStockModalComponent } from './send-stock-modal/send-stock-modal.component';
 import { NonConformityModalComponent } from './non-conformity-modal/non-conformity-modal.component';
+import { NonConformityDocumentationComponent } from './non-conformity-documentation/non-conformity-documentation.component';
+import { NonConformityQualityComponent } from './non-conformity-quality/non-conformity-quality.component';
+import { DeleteClaimModalComponent } from './delete-claim-modal/delete-claim-modal.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +113,10 @@ import { NonConformityModalComponent } from './non-conformity-modal/non-conformi
     DistributionModalComponent,
     StockComponent,
     SendStockModalComponent,
-    NonConformityModalComponent
+    NonConformityModalComponent,
+    NonConformityDocumentationComponent,
+    NonConformityQualityComponent,
+    DeleteClaimModalComponent
   ],
   imports: [
     HttpClientModule,
@@ -165,7 +171,8 @@ import { NonConformityModalComponent } from './non-conformity-modal/non-conformi
     NoDocumentationModalComponent,
     DistributionModalComponent,
     SendStockModalComponent,
-    NonConformityModalComponent
+    NonConformityModalComponent,
+    DeleteClaimModalComponent
   ]
 })
 export class AppModule { }

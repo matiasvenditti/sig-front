@@ -55,6 +55,23 @@ export class SidebarComponent implements OnInit {
       title: 'Proceso',
       icon: 'settings',
       link: 'process',
+    },
+    {
+      title: 'No Conformidad',
+      icon: 'alert-circle',
+      link: '',
+      children: [
+        {
+          title: 'Documentación',
+          icon: 'archive',
+          link: 'non-conformity-documentation'
+        },
+        {
+          title: 'Calidad',
+          icon: 'archive',
+          link: 'non-conformity-quality'
+        }
+      ]
     }
   ];
 

@@ -8,6 +8,8 @@ import { DriverComponent } from './driver/driver.component';
 import { TruckComponent } from './truck/truck.component';
 import { OrderComponent } from './order/order.component';
 import {SupplierComponent} from './supplier/supplier.component';
+import {NonConformityDocumentationComponent} from './non-conformity-documentation/non-conformity-documentation.component';
+import {NonConformityQualityComponent} from './non-conformity-quality/non-conformity-quality.component';
 
 const routes: Routes = [
   {path: 'process', component: MenuComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'drivers', component: DriverComponent},
   {path: 'trucks', component: TruckComponent},
   {path: 'orders', component: OrderComponent},
-  {path: 'suppliers', component: SupplierComponent}
+  {path: 'suppliers', component: SupplierComponent},
+  {path: 'non-conformity-documentation', component: NonConformityDocumentationComponent},
+  {path: 'non-conformity-quality', component: NonConformityQualityComponent}
 ];
 
 @NgModule({

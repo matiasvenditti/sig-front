@@ -21,4 +21,8 @@ export class ClaimService {
   delete(claimId: number) {
     return this.http.delete(ClaimApi.delete.delete(claimId));
   }
+
+  resolve(claim: ClaimDTO) {
+    return this.http.post(ClaimApi.post.resolve(), claim);
+  }
 }
