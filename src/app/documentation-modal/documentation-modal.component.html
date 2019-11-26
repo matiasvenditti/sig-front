@@ -1,36 +1,36 @@
 <nb-card status="primary">
     <nb-card-header>Datos de Remito</nb-card-header>
     <nb-card-body>
-  
+
         <form class="form" [formGroup]="orderForm">
             <input class="input" fullWidth nbInput placeholder="Fecha de Emisión" [nbDatepicker]="datepicker" formControlName="createdDate">
             <nb-datepicker #datepicker></nb-datepicker>
-  
-            <form class="sub-form" [formGroup]="productForm">  
+
+            <form class="sub-form" [formGroup]="productForm">
                   <nb-layout-column>
                       <nb-select formControlName="product" class="input" placeholder="Producto">
                         <nb-option *ngFor="let product of products" [value]="product">{{product.name}}</nb-option>
                       </nb-select>
                   </nb-layout-column>
-  
+
                   <nb-layout-column>
-                      <input class="input" type="number" nbInput placeholder="Cantidad" formControlName="quantity">
+                      <input class="input" type="number" min="0" nbInput placeholder="Cantidad" formControlName="quantity">
                   </nb-layout-column>
-  
+
                   <nb-layout-column left class="colored-column-success">
                       <button (click)="addToList()" nbButton [disabled]="!productForm.valid"><nb-icon icon="plus-outline"></nb-icon></button>
                   </nb-layout-column>
             </form>
-  
+
             <div [ngClass]="{'margin-bottom': createProducts.length > 0}" class="badge-container">
               <nb-badge (click)="removeProductItem(productItem)" *ngFor="let productItem of createProducts" text="{{productItem.product.name}} (x{{productItem.quantity}})" status="primary"></nb-badge>
             </div>
-  
+
             <nb-select formControlName="supplier" class="input" fullWidth placeholder="Proveedor">
               <nb-option *ngFor="let supplier of suppliers" [value]="supplier">{{supplier.name}}</nb-option>
             </nb-select>
         </form>
-  
+
     </nb-card-body>
     <nb-card-footer>
       <div class="button-container">
@@ -39,4 +39,3 @@
       </div>
     </nb-card-footer>
   </nb-card>
-  
