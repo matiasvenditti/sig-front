@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://172.19.105.170:8080'
+  apiUrl: 'https://sig-back.herokuapp.com'
 };
 
 /*
