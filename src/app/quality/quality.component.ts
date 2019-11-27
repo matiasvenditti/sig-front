@@ -49,6 +49,7 @@ export class QualityComponent implements OnInit {
 
   init() {
     this.orderItemService.findQuality().subscribe(res => {
+      console.log(res);
       this.productItemData = res;
       this.data = res.map(elem => {return {data: elem}});
       this.dataSource = this.dataSourceBuilder.create(this.data);
