@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://sig-back.herokuapp.com'
+  apiUrl: 'http://localhost:8080'
 };
